@@ -1,11 +1,393 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>INERTI</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INERTI — Tu negocio responde aunque estés durmiendo</title>
+  <meta name="description" content="Asistente de WhatsApp para PyMEs: responde preguntas, entrega precios y stock, y atiende clientes 24/7.">
+
+  <link rel="icon" href="assetsinerti-logo.png" type="image/png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="INERTI — Tu negocio responde aunque estés durmiendo">
+  <meta property="og:description" content="Asistente de WhatsApp para PyMEs: responde preguntas, entrega precios y stock, y atiende clientes 24/7.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CL">
+  <!-- TODO: Replace with final public production URL after deploy -->
+  <meta property="og:url" content="https://inerti.pages.dev">
+  <!-- TODO: Replace with final public absolute logo URL if needed -->
+  <meta property="og:image" content="https://inerti.pages.dev/assetsinerti-logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="INERTI — Tu negocio responde aunque estés durmiendo">
+  <meta name="twitter:description" content="Asistente de WhatsApp para PyMEs: responde preguntas, entrega precios y stock, y atiende clientes 24/7.">
+  <meta name="twitter:image" content="https://inerti.pages.dev/assetsinerti-logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>INERTI</h1>
-  <p>Landing page coming soon.</p>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="#" class="logo" aria-label="INERTI inicio">
+        <span class="logo-text">INERTI</span>
+        <svg class="logo-curve" width="60" height="10" viewBox="0 0 60 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M5 2 Q30 12 55 2" stroke="#0088CC" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </a>
+      <a href="https://wa.me/56958049391?text=Hola%20INERTI%2C%20quiero%20ver%20una%20demo%20del%20asistente%20de%20WhatsApp%20para%20mi%20negocio." class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Agendar demo</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ====== HERO ====== -->
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">Agentes de WhatsApp · Concepción, Chile</p>
+        <h1 class="hero-title">Tu negocio responde<br>aunque estés durmiendo.</h1>
+        <p class="hero-sub">Un asistente virtual en tu WhatsApp que responde preguntas, entrega precios y stock, y filtra lo rutinario — 24/7.</p>
+        <div class="hero-buttons">
+          <a href="https://wa.me/56958049391?text=Hola%20INERTI%2C%20quiero%20ver%20una%20demo%20del%20asistente%20de%20WhatsApp%20para%20mi%20negocio." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp</a>
+          <a href="#demo" class="btn btn-secondary">Ver demo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== VIDEO DEMO ====== -->
+    <section class="section video-section" id="demo">
+      <div class="container">
+        <h2 class="section-title">Míralo funcionar en 60 segundos</h2>
+        <p class="section-sub">Ejemplo real respondiendo precios, stock y horarios automáticamente.</p>
+        <div class="video-placeholder">
+          <!-- TODO: Replace this placeholder with YouTube or Loom embed -->
+          <div class="video-box">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="24" cy="24" r="23" stroke="#333" stroke-width="2"/>
+              <polygon points="20,16 34,24 20,32" fill="#555"/>
+            </svg>
+            <p>Aquí irá el video demo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== DEMO POR RUBRO ====== -->
+    <section class="section rubro-section rubro-demo" id="demo-rubros">
+      <div class="container">
+        <p class="eyebrow">DEMO POR RUBRO</p>
+        <h2 class="section-title">Así responde tu WhatsApp cuando tú no estás.</h2>
+        <p class="section-sub">Elige un rubro y mira una conversación típica automática.</p>
+
+        <div class="rubro-demo-grid">
+          <div class="demo-tabs" role="tablist" aria-label="Demo por rubro">
+            <button class="demo-tab active" type="button" role="tab" id="demo-tab-ferreteria" aria-selected="true" aria-controls="wa-demo-panel" data-demo="ferreteria">
+              <span class="demo-tab-title">Ferretería Don Pato</span>
+              <span class="demo-tab-copy">Precio + stock en segundos</span>
+            </button>
+            <button class="demo-tab" type="button" role="tab" id="demo-tab-veterinaria" aria-selected="false" aria-controls="wa-demo-panel" data-demo="veterinaria">
+              <span class="demo-tab-title">Veterinaria Huellitas Sur</span>
+              <span class="demo-tab-copy">Agenda automática</span>
+            </button>
+            <button class="demo-tab" type="button" role="tab" id="demo-tab-taller" aria-selected="false" aria-controls="wa-demo-panel" data-demo="taller">
+              <span class="demo-tab-title">Taller El Volante</span>
+              <span class="demo-tab-copy">Cotiza sin soltar la herramienta</span>
+            </button>
+            <button class="demo-tab" type="button" role="tab" id="demo-tab-restaurante" aria-selected="false" aria-controls="wa-demo-panel" data-demo="restaurante">
+              <span class="demo-tab-title">Cocinería La Esquina</span>
+              <span class="demo-tab-copy">Menú y delivery rápido</span>
+            </button>
+          </div>
+
+          <div class="wa-demo" id="wa-demo-panel" role="tabpanel" aria-labelledby="demo-tab-ferreteria">
+            <div class="wa-header">
+              <div class="wa-avatar" data-demo-avatar>🔩</div>
+              <div>
+                <div class="wa-name" data-demo-name>Ferretería Don Pato</div>
+                <div class="wa-status">
+                  <span class="wa-dot"></span>
+                  <span data-demo-status>Precio + stock en segundos</span>
+                </div>
+              </div>
+            </div>
+            <div class="wa-body" data-demo-body aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== PROOF BAR ====== -->
+    <section class="proof-bar">
+      <div class="container proof-grid">
+        <div class="proof-item">
+          <span class="proof-value">24/7</span>
+          <span class="proof-label">Sin horarios</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-value">~5 seg</span>
+          <span class="proof-label">Respuesta rápida</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-value">∞</span>
+          <span class="proof-label">Conversaciones</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-value">$0</span>
+          <span class="proof-label">Sin costo por mensaje</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== TRUST ====== -->
+    <section class="section trust-section">
+      <div class="container">
+        <p class="eyebrow">CONFIANZA</p>
+        <h2 class="section-title">Hecho para PyMEs reales.</h2>
+        <div class="trust-grid">
+          <div class="trust-item">Sin contratos largos, mes a mes</div>
+          <div class="trust-item">Sin costo por mensaje</div>
+          <div class="trust-item">Si no sabe, te deriva a ti</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== PROBLEM ====== -->
+    <section class="section problem-section">
+      <div class="container">
+        <h2 class="section-title">Un cliente que no recibe respuesta, no vuelve.</h2>
+        <div class="card-grid">
+          <div class="card">
+            <span class="card-icon">📱</span>
+            <h3 class="card-title">El WhatsApp no para</h3>
+            <p class="card-text">Mientras atiendes, los mensajes se acumulan.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🌙</span>
+            <h3 class="card-title">Fuera de horario = ventas perdidas</h3>
+            <p class="card-text">Te escriben cuando está cerrado y se van con otro.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🔁</span>
+            <h3 class="card-title">Siempre las mismas preguntas</h3>
+            <p class="card-text">Precio, stock, horario, ubicación… todos los días.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon">😓</span>
+            <h3 class="card-title">No puedes estar en todo</h3>
+            <p class="card-text">Negocio, WhatsApp y vida al mismo tiempo no se sostiene.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== HOW IT WORKS ====== -->
+    <section class="section steps-section">
+      <div class="container">
+        <h2 class="section-title">Lo instalamos. Tú solo recibes clientes.</h2>
+        <div class="steps-grid">
+          <div class="step">
+            <span class="step-number">01</span>
+            <p class="step-text">Cuéntanos sobre tu negocio (30 min)</p>
+          </div>
+          <div class="step">
+            <span class="step-number">02</span>
+            <p class="step-text">Configuramos todo por ti</p>
+          </div>
+          <div class="step">
+            <span class="step-number">03</span>
+            <p class="step-text">Tu asistente entra en funciones</p>
+          </div>
+          <div class="step">
+            <span class="step-number">04</span>
+            <p class="step-text">Tú solo recibes los casos importantes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== TARGET BUSINESSES ====== -->
+    <section class="section target-section">
+      <div class="container">
+        <h2 class="section-title">Diseñado para negocios reales.</h2>
+        <div class="card-grid">
+          <div class="card">
+            <span class="card-icon">🔩</span>
+            <h3 class="card-title">Ferreterías</h3>
+            <p class="card-text">Responde stock, precios y disponibilidad sin frenar la atención en mesón.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🐾</span>
+            <h3 class="card-title">Veterinarias</h3>
+            <p class="card-text">Agenda consultas y responde dudas frecuentes mientras atiendes pacientes.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🔧</span>
+            <h3 class="card-title">Talleres mecánicos</h3>
+            <p class="card-text">Entrega cotizaciones estimadas y horarios sin soltar la herramienta.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🍽</span>
+            <h3 class="card-title">Restaurantes</h3>
+            <p class="card-text">Comparte el menú, horarios y reservas sin interrumpir el servicio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FEATURES ====== -->
+    <section class="section features-section">
+      <div class="container">
+        <h2 class="section-title">Responde lo repetitivo.<br>Te deja lo importante.</h2>
+        <ul class="features-list">
+          <li class="feature-item">
+            <svg class="feature-check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#0088CC"/><path d="M6 10l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Responde preguntas 24/7
+          </li>
+          <li class="feature-item">
+            <svg class="feature-check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#0088CC"/><path d="M6 10l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Envía catálogo o precios
+          </li>
+          <li class="feature-item">
+            <svg class="feature-check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#0088CC"/><path d="M6 10l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Captura leads de clientes
+          </li>
+          <li class="feature-item">
+            <svg class="feature-check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#0088CC"/><path d="M6 10l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Agendamiento automático <span class="feature-tag">Plan Estándar</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====== PRICING ====== -->
+    <section class="section pricing-section" id="precios">
+      <div class="container">
+        <h2 class="section-title">Sin contratos largos. Sin letra chica.</h2>
+        <!-- TODO: Update final pricing here -->
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3 class="pricing-name">Plan Básico</h3>
+            <p class="pricing-desc">Ideal para empezar. Respuestas automáticas a las preguntas más frecuentes.</p>
+            <ul class="pricing-features">
+              <li>Respuestas 24/7</li>
+              <li>Preguntas frecuentes</li>
+              <li>Soporte por WhatsApp</li>
+            </ul>
+            <!-- TODO: Add final price -->
+            <a href="https://wa.me/56958049391?text=Hola%20INERTI%2C%20quiero%20ver%20una%20demo%20del%20asistente%20de%20WhatsApp%20para%20mi%20negocio." class="btn btn-primary btn-full" target="_blank" rel="noopener noreferrer">Agendar demo</a>
+          </div>
+          <div class="pricing-card pricing-card--featured">
+            <span class="pricing-badge">Popular</span>
+            <h3 class="pricing-name">Plan Estándar</h3>
+            <p class="pricing-desc">Lo más pedido. Catálogo, agendamiento y captura de leads.</p>
+            <ul class="pricing-features">
+              <li>Todo en Básico</li>
+              <li>Catálogo de productos</li>
+              <li>Agendamiento automático</li>
+              <li>Captura de leads</li>
+            </ul>
+            <!-- TODO: Add final price -->
+            <a href="https://wa.me/56958049391?text=Hola%20INERTI%2C%20quiero%20ver%20una%20demo%20del%20asistente%20de%20WhatsApp%20para%20mi%20negocio." class="btn btn-primary btn-full" target="_blank" rel="noopener noreferrer">Agendar demo</a>
+          </div>
+          <div class="pricing-card">
+            <h3 class="pricing-name">Plan Pro</h3>
+            <p class="pricing-desc">Para negocios con alto volumen. Flujos personalizados y prioridad.</p>
+            <ul class="pricing-features">
+              <li>Todo en Estándar</li>
+              <li>Flujos personalizados</li>
+              <li>Integraciones a medida</li>
+              <li>Soporte prioritario</li>
+            </ul>
+            <!-- TODO: Add final price -->
+            <a href="https://wa.me/56958049391?text=Hola%20INERTI%2C%20quiero%20ver%20una%20demo%20del%20asistente%20de%20WhatsApp%20para%20mi%20negocio." class="btn btn-primary btn-full" target="_blank" rel="noopener noreferrer">Agendar demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FAQ ====== -->
+    <section class="section faq-section" id="faq">
+      <div class="container">
+        <h2 class="section-title">Preguntas frecuentes</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-question">¿Mis clientes notarán que es un bot?</summary>
+            <div class="faq-answer">
+              <p>El asistente responde de forma natural y personalizada según tu negocio. La mayoría de los clientes no notan la diferencia, y si necesitan hablar contigo directamente, el asistente los deriva sin problema.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">¿Qué pasa si no sabe responder?</summary>
+            <div class="faq-answer">
+              <p>Si recibe una pregunta que no puede resolver, te avisa de inmediato para que tú tomes el control. Nunca inventará información.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">¿Cómo actualizo precios o inventario?</summary>
+            <div class="faq-answer">
+              <p>Te damos acceso a un panel simple donde puedes actualizar precios, productos y respuestas cuando quieras. También podemos hacerlo por ti si lo prefieres.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">¿Necesito cambiar mi número de WhatsApp?</summary>
+            <div class="faq-answer">
+              <p>No. El asistente funciona con tu número actual de WhatsApp Business. No necesitas crear una cuenta nueva ni cambiar nada.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">¿Hay contrato mínimo?</summary>
+            <div class="faq-answer">
+              <p>No. Puedes cancelar cuando quieras. Sin contratos largos, sin penalizaciones.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">¿Cuánto tarda la instalación?</summary>
+            <div class="faq-answer">
+              <p>En general el asistente queda listo en pocos días después de la reunión inicial. Nosotros nos encargamos de todo.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FINAL CTA ====== -->
+    <section class="section final-cta">
+      <div class="container">
+        <h2 class="section-title">Tu negocio responde. Tú descansas.</h2>
+        <p class="section-sub">Te mostramos una demo con ejemplos de tu rubro. Sin compromiso.</p>
+        <div class="final-cta-buttons">
+          <a href="https://wa.me/56958049391?text=Hola%20INERTI%2C%20quiero%20ver%20una%20demo%20del%20asistente%20de%20WhatsApp%20para%20mi%20negocio." class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
+          <a href="#demo" class="btn btn-secondary btn-lg">Ver cómo funciona</a>
+        </div>
+        <!-- Optional: Google Form embed could go here -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="logo" aria-label="INERTI">
+        <span class="logo-text">INERTI</span>
+        <svg class="logo-curve" width="60" height="10" viewBox="0 0 60 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M5 2 Q30 12 55 2" stroke="#0088CC" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <p class="footer-text">Concepción, Chile · Siempre presente</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
+
+
+
+
+
+
