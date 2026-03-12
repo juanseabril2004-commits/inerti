@@ -1,27 +1,27 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>INERTI — Tu negocio responde aunque estés durmiendo</title>
-  <meta name="description" content="Asistente de WhatsApp para PyMEs: responde preguntas, entrega precios y stock, y atiende clientes 24/7.">
+  <meta name="description" content="INERTI instala un asistente de WhatsApp con IA en tu negocio que responde preguntas, precios y stock las 24 horas. Para PyMEs chilenas en Concepción y todo Chile.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://inerti.pages.dev/">
 
-  <link rel="icon" href="assetsinerti-logo.png" type="image/png">
+  <link rel="icon" href="assets/inerti-nobackground.png" type="image/png">
 
   <!-- Open Graph -->
   <meta property="og:title" content="INERTI — Tu negocio responde aunque estés durmiendo">
-  <meta property="og:description" content="Asistente de WhatsApp para PyMEs: responde preguntas, entrega precios y stock, y atiende clientes 24/7.">
+  <meta property="og:description" content="INERTI instala un asistente de WhatsApp con IA en tu negocio que responde preguntas, precios y stock las 24 horas. Para PyMEs chilenas en Concepción y todo Chile.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CL">
-  <!-- TODO: Replace with final public production URL after deploy -->
   <meta property="og:url" content="https://inerti.pages.dev">
-  <!-- TODO: Replace with final public absolute logo URL if needed -->
-  <meta property="og:image" content="https://inerti.pages.dev/assetsinerti-logo.png">
+  <meta property="og:image" content="https://inerti.pages.dev/assets/inerti-nobackground.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="INERTI — Tu negocio responde aunque estés durmiendo">
-  <meta name="twitter:description" content="Asistente de WhatsApp para PyMEs: responde preguntas, entrega precios y stock, y atiende clientes 24/7.">
-  <meta name="twitter:image" content="https://inerti.pages.dev/assetsinerti-logo.png">
+  <meta name="twitter:description" content="INERTI instala un asistente de WhatsApp con IA en tu negocio que responde preguntas, precios y stock las 24 horas. Para PyMEs chilenas en Concepción y todo Chile.">
+  <meta name="twitter:image" content="https://inerti.pages.dev/assets/inerti-nobackground.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,11 +34,13 @@
   <nav class="navbar" id="navbar">
     <div class="container navbar-inner">
       <a href="#" class="logo" aria-label="INERTI inicio">
-        <span class="logo-text">INERTI</span>
-        <svg class="logo-curve" width="60" height="10" viewBox="0 0 60 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M5 2 Q30 12 55 2" stroke="#0088CC" stroke-width="2" fill="none" stroke-linecap="round"/>
-        </svg>
+        <img class="logo-image" src="assets/inerti-wordmark.png" alt="INERTI" width="120" height="40" decoding="async">
       </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#demo-rubros" class="nav-link">Demo</a>
+        <a href="#precios" class="nav-link">Precios</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
       <a href="https://wa.me/56958049391?text=Hola%20INERTI%2C%20quiero%20ver%20una%20demo%20del%20asistente%20de%20WhatsApp%20para%20mi%20negocio." class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Agendar demo</a>
     </div>
   </nav>
@@ -48,12 +50,34 @@
     <!-- ====== HERO ====== -->
     <section class="hero">
       <div class="container">
-        <p class="eyebrow">Agentes de WhatsApp · Concepción, Chile</p>
-        <h1 class="hero-title">Tu negocio responde<br>aunque estés durmiendo.</h1>
-        <p class="hero-sub">Un asistente virtual en tu WhatsApp que responde preguntas, entrega precios y stock, y filtra lo rutinario — 24/7.</p>
-        <div class="hero-buttons">
-          <a href="https://wa.me/56958049391?text=Hola%20INERTI%2C%20quiero%20ver%20una%20demo%20del%20asistente%20de%20WhatsApp%20para%20mi%20negocio." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp</a>
-          <a href="#demo" class="btn btn-secondary">Ver demo</a>
+        <div class="hero-grid">
+          <div class="hero-content">
+            <p class="eyebrow">Agentes de WhatsApp · Concepción, Chile</p>
+            <h1 class="hero-title">Tu negocio responde<br>aunque estés durmiendo.</h1>
+            <p class="hero-sub">Un asistente virtual en tu WhatsApp que responde preguntas, entrega precios y stock, y filtra lo rutinario — 24/7.</p>
+            <div class="hero-buttons">
+              <a href="https://wa.me/56958049391?text=Hola%20INERTI%2C%20quiero%20ver%20una%20demo%20del%20asistente%20de%20WhatsApp%20para%20mi%20negocio." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp</a>
+              <a href="#demo" class="btn btn-secondary">Ver cómo funciona</a>
+            </div>
+          </div>
+          <div class="hero-mockup" aria-hidden="true">
+            <!-- Mockup visual estático -->
+            <div class="wa-demo hero-wa-demo">
+              <div class="wa-header">
+                <div class="wa-avatar">🔩</div>
+                <div>
+                  <div class="wa-name">Ferretería Don Pato</div>
+                  <div class="wa-status"><span class="wa-dot"></span><span>En línea</span></div>
+                </div>
+              </div>
+              <div class="wa-body">
+                <div class="wa-msg wa-msg--out"><div class="wa-bubble">¿Tienen silicona transparente?</div></div>
+                <div class="wa-msg wa-msg--in"><div class="wa-bubble">Sí, quedan 12 unidades a $2.990 🙂<br>¿Cuántas necesitas?</div></div>
+                <div class="wa-msg wa-msg--out"><div class="wa-bubble">2, voy hoy a las 6</div></div>
+                <div class="wa-msg wa-msg--in"><div class="wa-bubble">Perfecto, te las reservo hasta las 19:00 ✅</div></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -61,17 +85,13 @@
     <!-- ====== VIDEO DEMO ====== -->
     <section class="section video-section" id="demo">
       <div class="container">
-        <h2 class="section-title">Míralo funcionar en 60 segundos</h2>
-        <p class="section-sub">Ejemplo real respondiendo precios, stock y horarios automáticamente.</p>
-        <div class="video-placeholder">
-          <!-- TODO: Replace this placeholder with YouTube or Loom embed -->
-          <div class="video-box">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-              <circle cx="24" cy="24" r="23" stroke="#333" stroke-width="2"/>
-              <polygon points="20,16 34,24 20,32" fill="#555"/>
-            </svg>
-            <p>Aquí irá el video demo</p>
-          </div>
+        <h2 class="section-title">Conoce a INERTI</h2>
+        <p class="section-sub">30 segundos para entender el problema que buscamos resolverte.</p>
+        <div class="video-wrapper video-wrapper--vertical">
+          <video autoplay muted loop playsinline preload="metadata" style="background: #0A0A0A;">
+            <source src="videos/landingvid.mov" type="video/quicktime">
+            <source src="videos/landingvid.mov" type="video/mp4">
+          </video>
         </div>
       </div>
     </section>
@@ -85,25 +105,37 @@
 
         <div class="rubro-demo-grid">
           <div class="demo-tabs" role="tablist" aria-label="Demo por rubro">
-            <button class="demo-tab active" type="button" role="tab" id="demo-tab-ferreteria" aria-selected="true" aria-controls="wa-demo-panel" data-demo="ferreteria">
+            <button class="demo-tab active" type="button" role="tab" id="demo-tab-ferreteria" aria-selected="true" aria-controls="wa-demo-panel" data-demo="ferreteria" data-demo-emoji="🔩">
               <span class="demo-tab-title">Ferretería Don Pato</span>
               <span class="demo-tab-copy">Precio + stock en segundos</span>
             </button>
-            <button class="demo-tab" type="button" role="tab" id="demo-tab-veterinaria" aria-selected="false" aria-controls="wa-demo-panel" data-demo="veterinaria">
+            <button class="demo-tab" type="button" role="tab" id="demo-tab-veterinaria" aria-selected="false" aria-controls="wa-demo-panel" data-demo="veterinaria" data-demo-emoji="🐾">
               <span class="demo-tab-title">Veterinaria Huellitas Sur</span>
               <span class="demo-tab-copy">Agenda automática</span>
             </button>
-            <button class="demo-tab" type="button" role="tab" id="demo-tab-taller" aria-selected="false" aria-controls="wa-demo-panel" data-demo="taller">
+            <button class="demo-tab" type="button" role="tab" id="demo-tab-taller" aria-selected="false" aria-controls="wa-demo-panel" data-demo="taller" data-demo-emoji="🔧">
               <span class="demo-tab-title">Taller El Volante</span>
               <span class="demo-tab-copy">Cotiza sin soltar la herramienta</span>
             </button>
-            <button class="demo-tab" type="button" role="tab" id="demo-tab-restaurante" aria-selected="false" aria-controls="wa-demo-panel" data-demo="restaurante">
+            <button class="demo-tab" type="button" role="tab" id="demo-tab-restaurante" aria-selected="false" aria-controls="wa-demo-panel" data-demo="restaurante" data-demo-emoji="🍽">
               <span class="demo-tab-title">Cocinería La Esquina</span>
               <span class="demo-tab-copy">Menú y delivery rápido</span>
+            </button>
+            <button class="demo-tab" type="button" role="tab" id="demo-tab-dental" aria-selected="false" aria-controls="wa-demo-panel" data-demo="dental" data-demo-emoji="🦷">
+              <span class="demo-tab-title">Dental Sonría</span>
+              <span class="demo-tab-copy">Horas sin llamar</span>
             </button>
           </div>
 
           <div class="wa-demo" id="wa-demo-panel" role="tabpanel" aria-labelledby="demo-tab-ferreteria">
+            <!-- WhatsApp status bar decorativo -->
+            <div class="wa-statusbar" aria-hidden="true">
+              <span class="wa-statusbar-time">10:23</span>
+              <div class="wa-statusbar-icons">
+                <span class="wa-statusbar-signal">●●●●○</span>
+                <span class="wa-statusbar-battery">🔋</span>
+              </div>
+            </div>
             <div class="wa-header">
               <div class="wa-avatar" data-demo-avatar>🔩</div>
               <div>
@@ -128,16 +160,16 @@
           <span class="proof-label">Sin horarios</span>
         </div>
         <div class="proof-item">
-          <span class="proof-value">~5 seg</span>
-          <span class="proof-label">Respuesta rápida</span>
+          <span class="proof-value">&lt; 5 seg</span>
+          <span class="proof-label">Primera respuesta</span>
         </div>
         <div class="proof-item">
           <span class="proof-value">∞</span>
-          <span class="proof-label">Conversaciones</span>
+          <span class="proof-label">Sin límite de mensajes</span>
         </div>
         <div class="proof-item">
           <span class="proof-value">$0</span>
-          <span class="proof-label">Sin costo por mensaje</span>
+          <span class="proof-label">Costo por conversación</span>
         </div>
       </div>
     </section>
@@ -145,12 +177,29 @@
     <!-- ====== TRUST ====== -->
     <section class="section trust-section">
       <div class="container">
-        <p class="eyebrow">CONFIANZA</p>
-        <h2 class="section-title">Hecho para PyMEs reales.</h2>
+        <p class="eyebrow">POR QUÉ INERTI</p>
+        <h2 class="section-title">Sin letra chica. Sin sorpresas.</h2>
         <div class="trust-grid">
-          <div class="trust-item">Sin contratos largos, mes a mes</div>
-          <div class="trust-item">Sin costo por mensaje</div>
-          <div class="trust-item">Si no sabe, te deriva a ti</div>
+          <div class="trust-card">
+            <div class="trust-icon">📅</div>
+            <h3 class="trust-card-title">Sin contrato mínimo</h3>
+            <p class="trust-card-text">Mes a mes. Cancelas cuando quieras, sin penalizaciones ni preguntas.</p>
+          </div>
+          <div class="trust-card">
+            <div class="trust-icon">💬</div>
+            <h3 class="trust-card-title">Mensajes ilimitados</h3>
+            <p class="trust-card-text">Tu bot responde todas las conversaciones sin cobrarte por cada mensaje.</p>
+          </div>
+          <div class="trust-card">
+            <div class="trust-icon">🔁</div>
+            <h3 class="trust-card-title">Siempre te avisa</h3>
+            <p class="trust-card-text">Si no sabe responder, te notifica al instante para que tomes el control.</p>
+          </div>
+          <div class="trust-card">
+            <div class="trust-icon">⚡</div>
+            <h3 class="trust-card-title">Listo en días</h3>
+            <p class="trust-card-text">Nos encargamos de todo. Tu asistente opera en 3–5 días hábiles.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -188,22 +237,38 @@
     <section class="section steps-section">
       <div class="container">
         <h2 class="section-title">Lo instalamos. Tú solo recibes clientes.</h2>
+        <div class="virtual-badge">
+          <span class="virtual-badge-icon">🖥</span>
+          <span class="virtual-badge-text">Setup 100% virtual — no necesitas ir a ningún lado ni perder tiempo de tu negocio.</span>
+        </div>
         <div class="steps-grid">
           <div class="step">
             <span class="step-number">01</span>
-            <p class="step-text">Cuéntanos sobre tu negocio (30 min)</p>
+            <div class="step-content">
+              <p class="step-text">Reunión de 30 minutos</p>
+              <p class="step-detail">Nos cuentas cómo funciona tu negocio, qué preguntan tus clientes y qué quieres automatizar.</p>
+            </div>
           </div>
           <div class="step">
             <span class="step-number">02</span>
-            <p class="step-text">Configuramos todo por ti</p>
+            <div class="step-content">
+              <p class="step-text">Configuramos todo por ti</p>
+              <p class="step-detail">Cargamos tu inventario, redactamos las respuestas y conectamos el bot a tu WhatsApp.</p>
+            </div>
           </div>
           <div class="step">
             <span class="step-number">03</span>
-            <p class="step-text">Tu asistente entra en funciones</p>
+            <div class="step-content">
+              <p class="step-text">Pruebas y ajustes</p>
+              <p class="step-detail">Simulas ser cliente, revisas el tono y las respuestas. Ajustamos hasta que quede perfecto.</p>
+            </div>
           </div>
           <div class="step">
             <span class="step-number">04</span>
-            <p class="step-text">Tú solo recibes los casos importantes</p>
+            <div class="step-content">
+              <p class="step-text">Tu asistente entra en funciones</p>
+              <p class="step-detail">En 3–5 días hábiles tu WhatsApp responde solo. Tú solo recibes los casos que importan.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -267,42 +332,59 @@
     <section class="section pricing-section" id="precios">
       <div class="container">
         <h2 class="section-title">Sin contratos largos. Sin letra chica.</h2>
-        <!-- TODO: Update final pricing here -->
         <div class="pricing-grid">
           <div class="pricing-card">
             <h3 class="pricing-name">Plan Básico</h3>
             <p class="pricing-desc">Ideal para empezar. Respuestas automáticas a las preguntas más frecuentes.</p>
+            <div class="pricing-price">
+              <span class="pricing-setup">Setup único $99.990</span>
+              <div class="pricing-monthly">
+                <span class="pricing-amount">$49.990</span>
+                <span class="pricing-period">/mes</span>
+              </div>
+            </div>
             <ul class="pricing-features">
               <li>Respuestas 24/7</li>
               <li>Preguntas frecuentes</li>
               <li>Soporte por WhatsApp</li>
             </ul>
-            <!-- TODO: Add final price -->
             <a href="https://wa.me/56958049391?text=Hola%20INERTI%2C%20quiero%20ver%20una%20demo%20del%20asistente%20de%20WhatsApp%20para%20mi%20negocio." class="btn btn-primary btn-full" target="_blank" rel="noopener noreferrer">Agendar demo</a>
           </div>
           <div class="pricing-card pricing-card--featured">
             <span class="pricing-badge">Popular</span>
             <h3 class="pricing-name">Plan Estándar</h3>
             <p class="pricing-desc">Lo más pedido. Catálogo, agendamiento y captura de leads.</p>
+            <div class="pricing-price">
+              <span class="pricing-setup">Setup único $99.990</span>
+              <div class="pricing-monthly">
+                <span class="pricing-amount">$89.990</span>
+                <span class="pricing-period">/mes</span>
+              </div>
+            </div>
             <ul class="pricing-features">
               <li>Todo en Básico</li>
               <li>Catálogo de productos</li>
               <li>Agendamiento automático</li>
               <li>Captura de leads</li>
             </ul>
-            <!-- TODO: Add final price -->
             <a href="https://wa.me/56958049391?text=Hola%20INERTI%2C%20quiero%20ver%20una%20demo%20del%20asistente%20de%20WhatsApp%20para%20mi%20negocio." class="btn btn-primary btn-full" target="_blank" rel="noopener noreferrer">Agendar demo</a>
           </div>
           <div class="pricing-card">
             <h3 class="pricing-name">Plan Pro</h3>
             <p class="pricing-desc">Para negocios con alto volumen. Flujos personalizados y prioridad.</p>
+            <div class="pricing-price">
+              <span class="pricing-setup">Setup único $99.990</span>
+              <div class="pricing-monthly">
+                <span class="pricing-amount">$149.990</span>
+                <span class="pricing-period">/mes</span>
+              </div>
+            </div>
             <ul class="pricing-features">
               <li>Todo en Estándar</li>
               <li>Flujos personalizados</li>
               <li>Integraciones a medida</li>
               <li>Soporte prioritario</li>
             </ul>
-            <!-- TODO: Add final price -->
             <a href="https://wa.me/56958049391?text=Hola%20INERTI%2C%20quiero%20ver%20una%20demo%20del%20asistente%20de%20WhatsApp%20para%20mi%20negocio." class="btn btn-primary btn-full" target="_blank" rel="noopener noreferrer">Agendar demo</a>
           </div>
         </div>
@@ -350,6 +432,18 @@
               <p>En general el asistente queda listo en pocos días después de la reunión inicial. Nosotros nos encargamos de todo.</p>
             </div>
           </details>
+          <details class="faq-item">
+            <summary class="faq-question">¿Funciona con mi número de WhatsApp actual?</summary>
+            <div class="faq-answer">
+              <p>Sí. Puedes mantener tu número actual. El asistente se conecta a través de la API oficial de WhatsApp Business, así que tu número sigue siendo el mismo para tus clientes.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">¿Necesito saber de tecnología para usarlo?</summary>
+            <div class="faq-answer">
+              <p>No. Nosotros configuramos todo. Tú solo necesitas avisarnos cuando cambian los precios o el inventario, y eso lo puedes hacer desde un formulario simple o mandándonos un mensaje por WhatsApp.</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -363,7 +457,6 @@
           <a href="https://wa.me/56958049391?text=Hola%20INERTI%2C%20quiero%20ver%20una%20demo%20del%20asistente%20de%20WhatsApp%20para%20mi%20negocio." class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
           <a href="#demo" class="btn btn-secondary btn-lg">Ver cómo funciona</a>
         </div>
-        <!-- Optional: Google Form embed could go here -->
       </div>
     </section>
 
@@ -373,21 +466,16 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="logo" aria-label="INERTI">
-        <span class="logo-text">INERTI</span>
-        <svg class="logo-curve" width="60" height="10" viewBox="0 0 60 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M5 2 Q30 12 55 2" stroke="#0088CC" stroke-width="2" fill="none" stroke-linecap="round"/>
-        </svg>
+        <img class="logo-image" src="assets/inerti-nobackground.png" alt="INERTI" width="120" height="40" decoding="async">
       </div>
-      <p class="footer-text">Concepción, Chile · Siempre presente</p>
+      <div class="footer-center">
+        <p class="footer-text">Concepción, Chile · Siempre presente</p>
+        <a href="mailto:contacto.inerti@gmail.com" class="footer-email">contacto.inerti@gmail.com</a>
+      </div>
+      <p class="footer-copy">© 2025 INERTI</p>
     </div>
   </footer>
 
   <script src="app.js"></script>
 </body>
 </html>
-
-
-
-
-
-

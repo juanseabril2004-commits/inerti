@@ -1,4 +1,4 @@
-﻿// ================================================
+// ================================================
 // INERTI — Landing Page Scripts
 // FAQ accordion · smooth scroll · scroll animations
 // ================================================
@@ -82,12 +82,16 @@
         name: 'Ferretería Don Pato',
         status: 'Precio + stock en segundos',
         messages: [
-          { side: 'out', text: 'Hola, ¿tienen silicona transparente?' },
-          { side: 'in', text: 'Sí 🙂 Nos quedan 12 unidades. Está a $2.990. ¿Cuántas necesitas?' },
-          { side: 'out', text: '2' },
-          { side: 'in', text: 'Perfecto. Te las reservo hasta las 19:00. ¿Vienes hoy?' },
-          { side: 'out', text: 'Sí, como a las 6' },
-          { side: 'in', text: 'Buenísimo. Quedan a tu nombre. Si quieres, también te muestro la negra.' }
+          { side: 'out', text: 'Buenas, necesito materiales para hacer una terraza de madera' },
+          { side: 'in',  text: 'Hola 👋 Con gusto te ayudo. ¿Cuántos m² tiene la terraza aproximadamente?' },
+          { side: 'out', text: 'Como 20 metros cuadrados' },
+          { side: 'in',  text: 'Para 20 m² te recomiendo:\n– Tablas pino cepillado 2x6": $4.200 c/u (necesitarías ~28 unidades)\n– Tornillos galvanizados 3": $3.500 la caja de 100\n– Impermeabilizante Sika 4L: $18.900\n\nTotal estimado: ~$160.000. ¿Quieres que reserve los materiales?' },
+          { side: 'out', text: 'Sí, y ¿tienen servicio de corte?' },
+          { side: 'in',  text: 'Sí 🪚 El corte tiene un valor de $500 por corte. ¿Para cuándo necesitas los materiales?' },
+          { side: 'out', text: 'Para el sábado' },
+          { side: 'in',  text: 'Perfecto. Reservo los materiales a tu nombre hasta el sábado a las 13:00. ¿A qué nombre queda la reserva?' },
+          { side: 'out', text: 'A nombre de Carlos Muñoz' },
+          { side: 'in',  text: '✅ Listo Carlos. Reserva confirmada para el sábado. Pregunta por los materiales en mesón al llegar. ¿Algo más en lo que pueda ayudarte?' }
         ]
       },
       veterinaria: {
@@ -95,12 +99,16 @@
         name: 'Veterinaria Huellitas Sur',
         status: 'Agenda automática',
         messages: [
-          { side: 'out', text: 'Hola, ¿tienen hora para vacuna mañana?' },
-          { side: 'in', text: 'Sí 🐾 Tenemos 11:00 o 16:30. ¿Cuál te sirve?' },
-          { side: 'out', text: '16:30' },
-          { side: 'in', text: 'Listo. Te agendé para mañana 16:30. ¿Nombre del paciente?' },
-          { side: 'out', text: 'Luna' },
-          { side: 'in', text: 'Perfecto. Luna queda agendada 🐶 Si quieres, te mando ubicación.' }
+          { side: 'out', text: 'Hola, mi perro está rascándose mucho, ¿puede ser alergia?' },
+          { side: 'in',  text: 'Hola 🐶 El rascado frecuente puede tener varias causas: alergias, hongos, parásitos externos o dermatitis. Lo mejor es una revisión presencial para que el veterinario evalúe bien. ¿Quieres agendar una consulta?' },
+          { side: 'out', text: 'Sí, ¿cuánto sale la consulta?' },
+          { side: 'in',  text: 'La consulta de dermatología vale $18.000. Si viene con muestra de pelo o costra, el análisis adicional es $12.000. ¿Qué raza y edad tiene tu perro?' },
+          { side: 'out', text: 'Es un golden de 3 años, se llama Bruno' },
+          { side: 'in',  text: 'Perfecto 🐕 Tenemos hora disponible mañana jueves 10:30 o el viernes a las 16:00. ¿Cuál te acomoda más?' },
+          { side: 'out', text: 'El viernes 16:00' },
+          { side: 'in',  text: '✅ Bruno queda agendado el viernes a las 16:00 con la Dra. Campos. Te mando la dirección por acá. ¿Necesitas algo más?' },
+          { side: 'out', text: 'Muchas gracias' },
+          { side: 'in',  text: 'Con gusto 😊 Si Bruno empeora antes del viernes, escríbenos y buscamos hora de urgencia. ¡Hasta el viernes!' }
         ]
       },
       taller: {
@@ -108,12 +116,16 @@
         name: 'Taller El Volante',
         status: 'Cotiza sin soltar la herramienta',
         messages: [
-          { side: 'out', text: 'Hola, ¿cuánto sale el cambio de pastillas?' },
-          { side: 'in', text: 'Depende del modelo. ¿Qué auto es (marca/año)?' },
-          { side: 'out', text: 'Hyundai Accent 2018' },
-          { side: 'in', text: 'Aprox $45.000 + mano de obra. Si quieres, te agendo diagnóstico.' },
-          { side: 'out', text: '¿Para mañana tienen hora?' },
-          { side: 'in', text: 'Sí, mañana tenemos en la tarde. Si quieres, te reservo una revisión.' }
+          { side: 'out', text: 'Hola, mi auto hace un ruido raro al frenar, como si raspara' },
+          { side: 'in',  text: 'Ese sonido suele ser desgaste de pastillas de freno o disco rayado. Puede ser peligroso ignorarlo. ¿Qué auto tienes (marca, modelo y año)?' },
+          { side: 'out', text: 'Toyota Corolla 2019' },
+          { side: 'in',  text: 'Para un Corolla 2019:\n– Cambio pastillas delanteras: $45.000–$65.000\n– Si los discos están rayados, reemplazo: $90.000–$130.000\n\nPara saber qué necesita exactamente hay que revisarlo. ¿Cuándo puedes traerlo?' },
+          { side: 'out', text: '¿Mañana está bien?' },
+          { side: 'in',  text: 'Sí 🔧 Mañana tenemos a las 10:00 y a las 14:30. ¿Cuál te sirve?' },
+          { side: 'out', text: 'A las 10 mejor' },
+          { side: 'in',  text: '✅ Reservado para mañana a las 10:00. La revisión de frenos no tiene costo. Si hay que hacer trabajo, te presupuestamos antes de tocar nada. ¿A qué nombre queda?' },
+          { side: 'out', text: 'Miguel Soto' },
+          { side: 'in',  text: 'Listo Miguel 👍 Mañana a las 10:00 en Taller El Volante. Te esperamos.' }
         ]
       },
       restaurante: {
@@ -121,15 +133,42 @@
         name: 'Cocinería La Esquina',
         status: 'Menú y delivery rápido',
         messages: [
-          { side: 'out', text: 'Hola, ¿tienen menú del día?' },
-          { side: 'in', text: 'Sí 🍽️ Hoy hay pollo al jugo o lentejas. Incluye bebida. $5.500.' },
-          { side: 'out', text: '¿Hacen delivery?' },
-          { side: 'in', text: 'Sí, en Concepción centro. ¿A qué dirección te lo envío?' },
+          { side: 'out', text: '¿Hacen delivery para 4 personas para el almuerzo?' },
+          { side: 'in',  text: 'Hola 👋 Sí hacemos delivery al mediodía. ¿A qué sector de Concepción? Así te confirmo si llegamos y el tiempo estimado.' },
           { side: 'out', text: 'Barros Arana con Aníbal Pinto' },
-          { side: 'in', text: 'Sí, llegamos ahí. El despacho demora aprox 30–40 min.' }
+          { side: 'in',  text: 'Sí llegamos ahí, en aprox 35–45 min 🛵 El menú de hoy es:\n– Cazuela de vacuno: $5.500\n– Pollo al jugo con arroz: $5.200\n– Pastel de choclo: $5.800\nTodos incluyen ensalada y bebida.' },
+          { side: 'out', text: '¿Tienen opciones vegetarianas?' },
+          { side: 'in',  text: 'Sí 🥗 Hoy tenemos lentejas guisadas con arroz a $4.800 y ensalada completa (tomate, lechuga, palta) a $3.200. ¿Te mando los 4 menús o mezclan opciones?' },
+          { side: 'out', text: '3 pollo al jugo y 1 lentejas' },
+          { side: 'in',  text: 'Anotado ✅ 3 pollo al jugo + 1 lentejas = $20.800 total. ¿Pagan contra entrega en efectivo o transferencia?' },
+          { side: 'out', text: 'Transferencia' },
+          { side: 'in',  text: 'Perfecto. Te mando los datos bancarios ahora. El pedido sale en 20 min y llega en ~40 min 🕐 ¿Confirmas la dirección exacta?' }
+        ]
+      },
+      dental: {
+        avatar: '🦷',
+        name: 'Dental Sonría',
+        status: 'Horas sin llamar',
+        messages: [
+          { side: 'out', text: 'Hola, quiero agendar una limpieza dental' },
+          { side: 'in',  text: 'Hola 😊 Con gusto. ¿Es tu primera vez con nosotros o ya eres paciente?' },
+          { side: 'out', text: 'Primera vez' },
+          { side: 'in',  text: 'Bienvenido 🦷 Para pacientes nuevos hacemos primero una evaluación inicial ($15.000) donde el dentista revisa y diseña tu plan de tratamiento. La limpieza viene después. ¿Te parece?' },
+          { side: 'out', text: 'Perfecto, ¿cuándo tienen hora?' },
+          { side: 'in',  text: 'Esta semana tenemos el jueves 11:00 y el viernes 15:30. ¿Cuál prefieres?' },
+          { side: 'out', text: 'El jueves 11' },
+          { side: 'in',  text: '✅ Agendado para el jueves a las 11:00. ¿A qué nombre? Te mandamos recordatorio 24 horas antes.' },
+          { side: 'out', text: 'Ana Pérez' },
+          { side: 'in',  text: 'Listo Ana 👍 Te esperamos el jueves. Recuerda venir con tu carnet. ¡Hasta pronto!' }
         ]
       }
     };
+
+    // Simulated timestamps for messages
+    var timeTemplates = [
+      '10:21', '10:21', '10:22', '10:22', '10:23',
+      '10:23', '10:24', '10:24', '10:25', '10:25'
+    ];
 
     function clearDemoTimeouts() {
       demoState.timeouts.forEach(function (timeoutId) {
@@ -146,13 +185,25 @@
       demoBody.scrollTop = demoBody.scrollHeight;
     }
 
-    function createMessage(message) {
+    function createMessage(message, index) {
       var item = document.createElement('div');
       var bubble = document.createElement('div');
 
       item.className = 'wa-msg wa-msg--' + message.side;
       bubble.className = 'wa-bubble';
       bubble.textContent = message.text;
+
+      // Add timestamp
+      var timeSpan = document.createElement('span');
+      timeSpan.className = 'wa-time';
+      var timeIndex = Math.min(index, timeTemplates.length - 1);
+      if (message.side === 'out') {
+        timeSpan.textContent = timeTemplates[timeIndex] + ' ✓✓';
+      } else {
+        timeSpan.textContent = timeTemplates[timeIndex];
+      }
+      bubble.appendChild(timeSpan);
+
       item.appendChild(bubble);
 
       return item;
@@ -184,6 +235,12 @@
         tab.classList.toggle('active', isActive);
         tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
 
+        // Set emoji data attribute on title for active tab CSS ::before
+        var titleEl = tab.querySelector('.demo-tab-title');
+        if (titleEl) {
+          titleEl.setAttribute('data-tab-emoji', tab.getAttribute('data-demo-emoji') || '');
+        }
+
         if (isActive) {
           demoPanel.setAttribute('aria-labelledby', tab.id);
         }
@@ -200,17 +257,17 @@
       syncActiveTab(demoId);
 
       if (instant) {
-        conversation.messages.forEach(function (message) {
-          demoBody.appendChild(createMessage(message));
+        conversation.messages.forEach(function (message, index) {
+          demoBody.appendChild(createMessage(message, index));
         });
         scrollDemoToBottom();
         return;
       }
 
-      conversation.messages.forEach(function (message) {
+      conversation.messages.forEach(function (message, index) {
         if (message.side === 'out') {
           demoState.timeouts.push(window.setTimeout(function () {
-            demoBody.appendChild(createMessage(message));
+            demoBody.appendChild(createMessage(message, index));
             scrollDemoToBottom();
           }, delay));
           delay += 900;
@@ -225,7 +282,7 @@
 
           demoState.timeouts.push(window.setTimeout(function () {
             typingMessage.remove();
-            demoBody.appendChild(createMessage(message));
+            demoBody.appendChild(createMessage(message, index));
             scrollDemoToBottom();
           }, 780));
         }, delay));
@@ -282,7 +339,7 @@
   }
   // ---- Fade-in on scroll (IntersectionObserver) ----
   var fadeTargets = document.querySelectorAll(
-    '.section, .card, .wa-mockup, .wa-demo, .pricing-card, .step'
+    '.section, .card, .wa-mockup, .wa-demo, .pricing-card, .step, .trust-card'
   );
 
   // Add the fade-in class to all targets
@@ -313,7 +370,3 @@
     });
   }
 })();
-
-
-
-
