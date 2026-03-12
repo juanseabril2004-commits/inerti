@@ -337,6 +337,57 @@
       activateDemo(demoState.activeId, { instant: isReducedMotion() });
     }
   }
+  // ---- Hamburger menu ----
+  var hamburger = document.getElementById('hamburger');
+  var navLinks = document.getElementById('nav-links');
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', function () {
+      var isOpen = navLinks.classList.toggle('is-open');
+      hamburger.classList.toggle('is-active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('.nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('is-open');
+        hamburger.classList.remove('is-active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  // ---- Proof bar count-up animation ----
+  var proofValues = document.querySelectorAll('.proof-value');
+
+  if (proofValues.length && 'IntersectionObserver' in window) {
+    var proofObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+
+        proofValues.forEach(function (el) {
+          var text = el.textContent.trim();
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(8px)';
+          el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+          setTimeout(function () {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          }, Array.prototype.indexOf.call(proofValues, el) * 150);
+        });
+
+        proofObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.5 });
+
+    var proofBar = document.querySelector('.proof-bar');
+    if (proofBar) proofObserver.observe(proofBar);
+  }
+
   // ---- Fade-in on scroll (IntersectionObserver) ----
   var fadeTargets = document.querySelectorAll(
     '.section, .card, .wa-mockup, .wa-demo, .pricing-card, .step, .trust-card'
