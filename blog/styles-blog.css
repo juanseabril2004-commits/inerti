@@ -228,10 +228,12 @@
   margin-bottom: 20px !important;
 }
 
+.article-body .article-cta a.btn,
 .article-cta .btn {
   display: inline-flex;
   color: #fff !important;
   text-decoration: none !important;
+  background: var(--accent) !important;
 }
 
 /* Related posts */
