@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://inerti.pages.dev/sitemap.xml
+Sitemap: https://inerti.cl/sitemap.xml
