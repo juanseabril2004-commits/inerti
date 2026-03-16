@@ -193,7 +193,12 @@ ul, ol { list-style: none; }
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+}
+
+.navbar-right .btn {
+  padding: 7px 14px;
+  font-size: 0.78rem;
 }
 
 /* Hamburger */
@@ -232,30 +237,32 @@ ul, ol { list-style: none; }
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Hero scarcity */
-.hero-scarcity {
-  margin-top: 16px;
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-/* Floating WhatsApp button */
-.wa-fab {
+/* Floating contact buttons */
+.fab-group {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  width: 56px;
-  height: 56px;
-  background: #25D366;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 90;
+}
+
+.wa-fab,
+.email-fab {
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
-  z-index: 90;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wa-fab {
+  background: #25D366;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
 }
 
 .wa-fab:hover {
@@ -263,11 +270,21 @@ ul, ol { list-style: none; }
   box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
 }
 
+.email-fab {
+  background: var(--accent);
+  box-shadow: 0 4px 16px rgba(0, 136, 204, 0.4);
+}
+
+.email-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(0, 136, 204, 0.5);
+}
+
 /* ================================================
    HERO
    ================================================ */
 .hero {
-  padding: 80px 0 60px;
+  padding: 80px 0 32px;
 }
 
 .eyebrow {
@@ -617,39 +634,6 @@ ul, ol { list-style: none; }
   margin-top: 4px;
 }
 
-/* ================================================
-   VIDEO DEMO
-   ================================================ */
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  aspect-ratio: 16 / 9;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.04);
-  background: #0A0A0A;
-}
-
-.video-wrapper video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Vertical video variant */
-.video-wrapper--vertical {
-  aspect-ratio: 9 / 16;
-  max-width: 360px;
-}
-
-@media (min-width: 640px) {
-  .video-wrapper--vertical {
-    max-width: 400px;
-  }
-}
 
 /* ================================================
    CARD GRID (Problems / Targets)
@@ -1214,7 +1198,7 @@ ul, ol { list-style: none; }
    ================================================ */
 @media (min-width: 960px) {
   .hero {
-    padding: 120px 0 80px;
+    padding: 120px 0 48px;
   }
 
   .hero-title {
@@ -1280,6 +1264,16 @@ ul, ol { list-style: none; }
     padding: 16px 12px;
   }
 
+  /* Navbar button — restore desktop size */
+  .navbar-right {
+    gap: 12px;
+  }
+
+  .navbar-right .btn {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+
   /* Nav links */
   .nav-links {
     display: flex;
@@ -1295,11 +1289,16 @@ ul, ol { list-style: none; }
   }
 }
 
-/* Hide WA FAB on very large screens where navbar CTA is always visible */
 @media (min-width: 960px) {
-  .wa-fab {
+  .fab-group {
     bottom: 28px;
     right: 28px;
+  }
+
+  .wa-fab,
+  .email-fab {
+    width: 56px;
+    height: 56px;
   }
 }
 

@@ -161,6 +161,23 @@
           { side: 'out', text: 'Ana Pérez' },
           { side: 'in',  text: 'Listo Ana 👍 Te esperamos el jueves. Recuerda venir con tu carnet. ¡Hasta pronto!' }
         ]
+      },
+      inmobiliaria: {
+        avatar: '🏠',
+        name: 'Inmobiliaria Raíces Sur',
+        status: 'Arriendos y visitas al instante',
+        messages: [
+          { side: 'out', text: 'Hola, busco un depto en arriendo en el centro de Concepción' },
+          { side: 'in',  text: 'Hola 👋 Con gusto te ayudo. ¿Cuántos dormitorios necesitas y cuál es tu presupuesto mensual aproximado?' },
+          { side: 'out', text: '2 dormitorios, máximo $450.000' },
+          { side: 'in',  text: 'Tenemos 3 opciones disponibles en esa zona:\n– Depto Barros Arana 540: 2D/1B, 55 m², $420.000/mes\n– Depto Caupolicán 312: 2D/2B, 62 m², $445.000/mes\n– Depto O\'Higgins 890: 2D/1B, 48 m², $380.000/mes\n\nTodos incluyen estacionamiento. ¿Te interesa agendar una visita?' },
+          { side: 'out', text: 'El de Caupolicán se ve bien, ¿puedo verlo?' },
+          { side: 'in',  text: 'Claro 🏠 Tenemos disponibilidad para visita mañana a las 11:00 o el sábado a las 10:30. ¿Cuál te acomoda?' },
+          { side: 'out', text: 'El sábado a las 10:30' },
+          { side: 'in',  text: '✅ Visita agendada para el sábado a las 10:30 en Caupolicán 312. Te mando la ubicación exacta por acá. ¿A qué nombre queda?' },
+          { side: 'out', text: 'Camila Rojas' },
+          { side: 'in',  text: 'Perfecto Camila 👍 Te esperamos el sábado. Lleva tu carnet y si tienes liquidaciones de sueldo, tráelas por si decides avanzar. ¡Nos vemos!' }
+        ]
       }
     };
 
