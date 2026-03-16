@@ -230,6 +230,8 @@
 
 .article-cta .btn {
   display: inline-flex;
+  color: #fff !important;
+  text-decoration: none !important;
 }
 
 /* Related posts */
