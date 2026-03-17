@@ -786,11 +786,11 @@ ul, ol { list-style: none; }
    ================================================ */
 .pricing-grid {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 8px;
+  padding: 16px 0 12px;
   cursor: grab;
 }
 
@@ -825,8 +825,7 @@ ul, ol { list-style: none; }
   flex-direction: column;
   position: relative;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  min-width: 270px;
-  flex: 0 0 auto;
+  flex: 0 0 280px;
   scroll-snap-align: start;
 }
 
@@ -1291,6 +1290,16 @@ ul, ol { list-style: none; }
 
   .step-number {
     font-size: 4rem;
+  }
+
+  .pricing-grid {
+    overflow-x: visible;
+    cursor: default;
+  }
+
+  .pricing-card {
+    flex: 1 1 0;
+    min-width: 0;
   }
 
   /* Hero grid — two columns */
