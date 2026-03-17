@@ -898,6 +898,31 @@ ul, ol { list-style: none; }
   color: var(--text-secondary);
 }
 
+.pricing-card--enterprise {
+  border-color: #2a2a2a;
+  background: linear-gradient(135deg, #0d1117 0%, #111820 100%);
+}
+
+.pricing-card--enterprise:hover {
+  border-color: var(--accent);
+}
+
+.pricing-amount--custom {
+  font-size: 1.6rem;
+  background: linear-gradient(90deg, var(--accent), #66ccff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pricing-disclaimer {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 24px;
+  line-height: 1.5;
+}
+
 /* ================================================
    FAQ
    ================================================ */
@@ -1185,7 +1210,7 @@ ul, ol { list-style: none; }
   }
 
   .pricing-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .trust-grid {
@@ -1241,6 +1266,10 @@ ul, ol { list-style: none; }
 
   .step-number {
     font-size: 4rem;
+  }
+
+  .pricing-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   /* Hero grid — two columns */
