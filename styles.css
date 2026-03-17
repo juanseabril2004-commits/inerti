@@ -785,9 +785,35 @@ ul, ol { list-style: none; }
    PRICING
    ================================================ */
 .pricing-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
   gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+  cursor: grab;
+}
+
+.pricing-grid:active {
+  cursor: grabbing;
+}
+
+.pricing-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.pricing-grid::-webkit-scrollbar-track {
+  background: var(--bg-alt);
+  border-radius: 3px;
+}
+
+.pricing-grid::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.pricing-grid::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
 }
 
 .pricing-card {
@@ -799,6 +825,9 @@ ul, ol { list-style: none; }
   flex-direction: column;
   position: relative;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  min-width: 270px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
 }
 
 .pricing-card:hover {
@@ -1209,10 +1238,6 @@ ul, ol { list-style: none; }
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .pricing-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .trust-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1266,10 +1291,6 @@ ul, ol { list-style: none; }
 
   .step-number {
     font-size: 4rem;
-  }
-
-  .pricing-grid {
-    grid-template-columns: repeat(4, 1fr);
   }
 
   /* Hero grid — two columns */

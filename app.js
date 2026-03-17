@@ -437,4 +437,22 @@
       el.classList.add('is-visible');
     });
   }
+  // ---- Pricing carousel drag-to-scroll ----
+  var pricingGrid = document.querySelector('.pricing-grid');
+  if (pricingGrid) {
+    var isDown = false, startX, scrollLeft;
+    pricingGrid.addEventListener('mousedown', function (e) {
+      isDown = true;
+      startX = e.pageX - pricingGrid.offsetLeft;
+      scrollLeft = pricingGrid.scrollLeft;
+    });
+    pricingGrid.addEventListener('mouseleave', function () { isDown = false; });
+    pricingGrid.addEventListener('mouseup', function () { isDown = false; });
+    pricingGrid.addEventListener('mousemove', function (e) {
+      if (!isDown) return;
+      e.preventDefault();
+      var x = e.pageX - pricingGrid.offsetLeft;
+      pricingGrid.scrollLeft = scrollLeft - (x - startX);
+    });
+  }
 })();
