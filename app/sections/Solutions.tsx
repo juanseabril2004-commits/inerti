@@ -229,8 +229,8 @@ export default function Solutions() {
     const diffX = dragCurrentX.current - dragStartX.current;
     const diffY = dragCurrentY.current - dragStartY.current;
 
-    // On first meaningful movement, decide direction
-    if (!hasMoved.current && (Math.abs(diffX) > 8 || Math.abs(diffY) > 8)) {
+    // On first meaningful movement, decide direction (low threshold for responsiveness)
+    if (!hasMoved.current && (Math.abs(diffX) > 4 || Math.abs(diffY) > 4)) {
       hasMoved.current = true;
       if (Math.abs(diffY) > Math.abs(diffX)) {
         // Vertical — release capture so browser scrolls natively
@@ -257,7 +257,7 @@ export default function Solutions() {
 
     isDraggingRef.current = false;
     const diff = dragCurrentX.current - dragStartX.current;
-    const threshold = dims.cardWidth * 0.15;
+    const threshold = Math.min(40, Math.max(24, dims.cardWidth * 0.10));
     if (diff < -threshold) {
       goNext();
     } else if (diff > threshold) {
