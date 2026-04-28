@@ -207,7 +207,7 @@ export default function Solutions() {
     scheduleJumpIfNeeded(target);
   };
 
-  // Touch / Mouse drag handlers (delayed capture — no capture until horizontal direction is confirmed)
+  // Touch / Mouse drag handlers
   const onPointerDown = (e: React.PointerEvent) => {
     dragStartX.current = e.clientX;
     dragStartY.current = e.clientY;
@@ -216,7 +216,9 @@ export default function Solutions() {
     hasMoved.current = false;
     isVerticalScroll.current = false;
     isDraggingRef.current = false;
-    // Do NOT capture here — wait for pointermove to decide direction
+    const el = e.currentTarget as HTMLElement;
+    el.style.cursor = "grabbing";
+    el.setPointerCapture?.(e.pointerId);
   };
 
   const onPointerMove = (e: React.PointerEvent) => {
@@ -227,53 +229,46 @@ export default function Solutions() {
     const diffX = dragCurrentX.current - dragStartX.current;
     const diffY = dragCurrentY.current - dragStartY.current;
 
-    // Determine direction on first meaningful movement
-    if (!hasMoved.current && (Math.abs(diffX) > 6 || Math.abs(diffY) > 6)) {
+    // On first meaningful movement, decide direction
+    if (!hasMoved.current && (Math.abs(diffX) > 8 || Math.abs(diffY) > 8)) {
       hasMoved.current = true;
-      if (Math.abs(diffY) >= Math.abs(diffX)) {
-        // Vertical scroll — let browser handle it, ignore this gesture entirely
+      if (Math.abs(diffY) > Math.abs(diffX)) {
+        // Vertical — release capture so browser scrolls natively
         isVerticalScroll.current = true;
+        isDraggingRef.current = false;
+        const el = e.currentTarget as HTMLElement;
+        el.style.cursor = "grab";
+        el.releasePointerCapture?.(e.pointerId);
         return;
       }
-      // Horizontal drag — now we capture and take over
+      // Horizontal
       isDraggingRef.current = true;
-      if (e.currentTarget instanceof HTMLElement) {
-        e.currentTarget.style.cursor = "grabbing";
-      }
-      (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
     }
   };
 
   const onPointerUp = (e: React.PointerEvent) => {
-    if (isVerticalScroll.current) {
+    const el = e.currentTarget as HTMLElement;
+    el.style.cursor = "grab";
+
+    if (isVerticalScroll.current || !isDraggingRef.current) {
       isDraggingRef.current = false;
-      if (e.currentTarget instanceof HTMLElement) {
-        e.currentTarget.style.cursor = "grab";
-      }
       return;
     }
 
-    if (isDraggingRef.current) {
-      isDraggingRef.current = false;
-      if (e.currentTarget instanceof HTMLElement) {
-        e.currentTarget.style.cursor = "grab";
-      }
-      const diff = dragCurrentX.current - dragStartX.current;
-      const threshold = dims.cardWidth * 0.15;
-      if (diff < -threshold) {
-        goNext();
-      } else if (diff > threshold) {
-        goPrev();
-      }
+    isDraggingRef.current = false;
+    const diff = dragCurrentX.current - dragStartX.current;
+    const threshold = dims.cardWidth * 0.15;
+    if (diff < -threshold) {
+      goNext();
+    } else if (diff > threshold) {
+      goPrev();
     }
   };
 
   const onPointerLeave = (e: React.PointerEvent) => {
     if (isDraggingRef.current) {
       isDraggingRef.current = false;
-      if (e.currentTarget instanceof HTMLElement) {
-        e.currentTarget.style.cursor = "grab";
-      }
+      (e.currentTarget as HTMLElement).style.cursor = "grab";
     }
   };
 
