@@ -90,17 +90,15 @@ const baseSolutions = [
 ];
 
 const BASE_LEN = baseSolutions.length;
-// Quintuple for massive buffer: [-2] [-1] [0] [+1] [+2]
+// Triple buffer: [-1] [0] [+1] — enough for swipe transitions
 const solutions = [
-  ...baseSolutions, // block -2 (0-4)
-  ...baseSolutions, // block -1 (5-9)
-  ...baseSolutions, // block 0  (10-14) START
-  ...baseSolutions, // block +1 (15-19)
-  ...baseSolutions, // block +2 (20-24)
+  ...baseSolutions, // block -1 (0-4)
+  ...baseSolutions, // block 0  (5-9) START
+  ...baseSolutions, // block +1 (10-14)
 ];
-const BLOCK0_START = BASE_LEN * 2; // 10
+const BLOCK0_START = BASE_LEN; // 5
 const SAFE_START = BASE_LEN; // 5
-const SAFE_END = BASE_LEN * 4 - 1; // 19
+const SAFE_END = BASE_LEN * 2 - 1; // 9
 
 export default function Solutions() {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -112,8 +110,11 @@ export default function Solutions() {
 
   // Touch/drag state
   const dragStartX = useRef(0);
+  const dragStartY = useRef(0);
   const dragCurrentX = useRef(0);
+  const dragCurrentY = useRef(0);
   const hasMoved = useRef(false);
+  const isVerticalScroll = useRef(false);
   const lastWheelTime = useRef(0);
   const jumpTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -200,8 +201,11 @@ export default function Solutions() {
   // Touch / Mouse drag handlers
   const onPointerDown = (e: React.PointerEvent) => {
     dragStartX.current = e.clientX;
+    dragStartY.current = e.clientY;
     dragCurrentX.current = e.clientX;
+    dragCurrentY.current = e.clientY;
     hasMoved.current = false;
+    isVerticalScroll.current = false;
     setIsDragging(true);
     (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
   };
@@ -209,11 +213,22 @@ export default function Solutions() {
   const onPointerMove = (e: React.PointerEvent) => {
     if (!isDragging) return;
     dragCurrentX.current = e.clientX;
-    const diff = dragCurrentX.current - dragStartX.current;
-    if (Math.abs(diff) > 10) hasMoved.current = true;
+    dragCurrentY.current = e.clientY;
+    const diffX = dragCurrentX.current - dragStartX.current;
+    const diffY = dragCurrentY.current - dragStartY.current;
+
+    // If vertical movement dominates, release capture and let the browser scroll
+    if (!isVerticalScroll.current && Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 10) {
+      isVerticalScroll.current = true;
+      setIsDragging(false);
+      (e.target as HTMLElement).releasePointerCapture?.(e.pointerId);
+      return;
+    }
+
+    if (Math.abs(diffX) > 10) hasMoved.current = true;
   };
 
-  const onPointerUp = () => {
+  const onPointerUp = (e: React.PointerEvent) => {
     if (!isDragging) return;
     setIsDragging(false);
     const diff = dragCurrentX.current - dragStartX.current;
@@ -307,7 +322,11 @@ export default function Solutions() {
             onPointerUp={onPointerUp}
             onPointerLeave={onPointerUp}
             onWheel={onWheel}
-            style={{ cursor: isDragging ? "grabbing" : "grab" }}
+            style={{
+              cursor: isDragging ? "grabbing" : "grab",
+              touchAction: "pan-y",
+              overscrollBehaviorX: "contain",
+            }}
           >
             {/* Track */}
             <div
@@ -331,7 +350,7 @@ export default function Solutions() {
                     style={{ width: dims.cardWidth }}
                   >
                     <div
-                      className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border p-6 transition-all duration-500 md:p-8"
+                      className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border p-6 duration-500 md:p-8"
                       style={{
                         borderColor: isCenter ? `${item.color}35` : "rgba(255,255,255,0.06)",
                         background: isCenter
@@ -339,6 +358,7 @@ export default function Solutions() {
                           : "rgba(255,255,255,0.01)",
                         transform: isCenter ? "scale(1)" : "scale(0.94)",
                         opacity: isCenter ? 1 : 0.5,
+                        transitionProperty: "transform, opacity",
                       }}
                     >
                       <div>
