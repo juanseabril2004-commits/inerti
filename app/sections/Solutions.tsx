@@ -105,10 +105,10 @@ export default function Solutions() {
   const [activeIndex, setActiveIndex] = useState(BLOCK0_START);
   const [dims, setDims] = useState({ containerWidth: 0, cardWidth: 320, gap: 20 });
   const [noTransition, setNoTransition] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Touch/drag state
+  // Touch/drag state (refs to avoid React re-renders during scroll)
+  const isDraggingRef = useRef(false);
   const dragStartX = useRef(0);
   const dragStartY = useRef(0);
   const dragCurrentX = useRef(0);
@@ -125,7 +125,16 @@ export default function Solutions() {
       const containerW = wrapperRef.current?.clientWidth || w;
       const cardW = w < 768 ? Math.min(320, containerW * 0.82) : 400;
       const g = w < 768 ? 16 : 24;
-      setDims({ containerWidth: containerW, cardWidth: cardW, gap: g });
+      setDims((prev) => {
+        if (
+          prev.containerWidth === containerW &&
+          prev.cardWidth === cardW &&
+          prev.gap === g
+        ) {
+          return prev;
+        }
+        return { containerWidth: containerW, cardWidth: cardW, gap: g };
+      });
     };
     update();
     window.addEventListener("resize", update);
@@ -198,7 +207,7 @@ export default function Solutions() {
     scheduleJumpIfNeeded(target);
   };
 
-  // Touch / Mouse drag handlers
+  // Touch / Mouse drag handlers (delayed capture — no capture until horizontal direction is confirmed)
   const onPointerDown = (e: React.PointerEvent) => {
     dragStartX.current = e.clientX;
     dragStartY.current = e.clientY;
@@ -206,37 +215,65 @@ export default function Solutions() {
     dragCurrentY.current = e.clientY;
     hasMoved.current = false;
     isVerticalScroll.current = false;
-    setIsDragging(true);
-    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+    isDraggingRef.current = false;
+    // Do NOT capture here — wait for pointermove to decide direction
   };
 
   const onPointerMove = (e: React.PointerEvent) => {
-    if (!isDragging) return;
+    if (isVerticalScroll.current) return;
+
     dragCurrentX.current = e.clientX;
     dragCurrentY.current = e.clientY;
     const diffX = dragCurrentX.current - dragStartX.current;
     const diffY = dragCurrentY.current - dragStartY.current;
 
-    // If vertical movement dominates, release capture and let the browser scroll
-    if (!isVerticalScroll.current && Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 10) {
-      isVerticalScroll.current = true;
-      setIsDragging(false);
-      (e.target as HTMLElement).releasePointerCapture?.(e.pointerId);
-      return;
+    // Determine direction on first meaningful movement
+    if (!hasMoved.current && (Math.abs(diffX) > 6 || Math.abs(diffY) > 6)) {
+      hasMoved.current = true;
+      if (Math.abs(diffY) >= Math.abs(diffX)) {
+        // Vertical scroll — let browser handle it, ignore this gesture entirely
+        isVerticalScroll.current = true;
+        return;
+      }
+      // Horizontal drag — now we capture and take over
+      isDraggingRef.current = true;
+      if (e.currentTarget instanceof HTMLElement) {
+        e.currentTarget.style.cursor = "grabbing";
+      }
+      (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
     }
-
-    if (Math.abs(diffX) > 10) hasMoved.current = true;
   };
 
   const onPointerUp = (e: React.PointerEvent) => {
-    if (!isDragging) return;
-    setIsDragging(false);
-    const diff = dragCurrentX.current - dragStartX.current;
-    const threshold = dims.cardWidth * 0.15;
-    if (diff < -threshold) {
-      goNext();
-    } else if (diff > threshold) {
-      goPrev();
+    if (isVerticalScroll.current) {
+      isDraggingRef.current = false;
+      if (e.currentTarget instanceof HTMLElement) {
+        e.currentTarget.style.cursor = "grab";
+      }
+      return;
+    }
+
+    if (isDraggingRef.current) {
+      isDraggingRef.current = false;
+      if (e.currentTarget instanceof HTMLElement) {
+        e.currentTarget.style.cursor = "grab";
+      }
+      const diff = dragCurrentX.current - dragStartX.current;
+      const threshold = dims.cardWidth * 0.15;
+      if (diff < -threshold) {
+        goNext();
+      } else if (diff > threshold) {
+        goPrev();
+      }
+    }
+  };
+
+  const onPointerLeave = (e: React.PointerEvent) => {
+    if (isDraggingRef.current) {
+      isDraggingRef.current = false;
+      if (e.currentTarget instanceof HTMLElement) {
+        e.currentTarget.style.cursor = "grab";
+      }
     }
   };
 
@@ -320,10 +357,10 @@ export default function Solutions() {
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
             onPointerUp={onPointerUp}
-            onPointerLeave={onPointerUp}
+            onPointerLeave={onPointerLeave}
             onWheel={onWheel}
             style={{
-              cursor: isDragging ? "grabbing" : "grab",
+              cursor: "grab",
               touchAction: "pan-y",
               overscrollBehaviorX: "contain",
             }}
