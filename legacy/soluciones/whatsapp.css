@@ -1,0 +1,616 @@
+/* ================================================
+   WHATSAPP DEMO PAGE
+   ================================================ */
+
+/* ---- Demo Hero ---- */
+.demo-hero {
+  padding: 100px 0 40px;
+  position: relative;
+}
+
+.demo-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 28px;
+  transition: color var(--duration) var(--ease);
+}
+
+.demo-back:hover { color: var(--accent); }
+
+.demo-hero-content { max-width: 600px; }
+
+.demo-badge-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-subtle);
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+.demo-hero-title {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+}
+
+.demo-hero-sub {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+/* ---- Demo Layout ---- */
+.demo-interactive {
+  padding: 20px 0 80px;
+}
+
+.demo-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ---- Sidebar / Tabs ---- */
+.demo-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.demo-sidebar-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.demo-rubro-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+}
+
+.demo-rubro {
+  flex: 0 0 220px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition:
+    border-color var(--duration) var(--ease),
+    background var(--duration) var(--ease),
+    transform var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
+}
+
+.demo-rubro:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-glass-hover);
+  transform: translateY(-2px);
+}
+
+.demo-rubro.active {
+  border-color: rgba(59,130,246,0.5);
+  background: linear-gradient(135deg, rgba(59,130,246,0.10) 0%, rgba(10,10,18,0.95) 100%);
+  box-shadow: 0 8px 24px rgba(59,130,246,0.1);
+}
+
+.demo-rubro-emoji {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+}
+
+.demo-rubro-name {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.demo-rubro-desc {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Try it button - Inside phone mockup */
+.demo-phone-screen .demo-try-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, rgba(59,130,246,0.15) 0%, rgba(139,92,246,0.1) 100%);
+  border: none;
+  border-top: 1px solid rgba(59,130,246,0.2);
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration) var(--ease);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-phone-screen .demo-try-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+  opacity: 0;
+  transition: opacity var(--duration) var(--ease);
+}
+
+.demo-phone-screen .demo-try-btn:hover {
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.demo-phone-screen .demo-try-btn:hover::before {
+  opacity: 1;
+}
+
+.demo-phone-screen .demo-try-btn svg,
+.demo-phone-screen .demo-try-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.demo-phone-screen .demo-try-btn.is-active {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(59,130,246,0.3);
+}
+
+/* ---- Phone Mockup ---- */
+.demo-phone-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.demo-phone {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  background: #0a0a14;
+  border-radius: 40px;
+  border: 2px solid rgba(255,255,255,0.08);
+  padding: 12px;
+  box-shadow:
+    0 32px 80px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(255,255,255,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.demo-phone-notch {
+  width: 120px;
+  height: 24px;
+  background: #0a0a14;
+  border-radius: 0 0 16px 16px;
+  margin: 0 auto 0;
+  position: relative;
+  z-index: 5;
+}
+
+.demo-phone-screen {
+  border-radius: 28px;
+  overflow: hidden;
+  background: #080810;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Override wa-body for demo page */
+.demo-phone-screen .wa-body {
+  min-height: 420px;
+  max-height: 420px;
+  overflow-y: auto;
+  justify-content: flex-start;
+  padding: 14px 12px;
+  scroll-behavior: smooth;
+}
+
+.demo-phone-screen .wa-body::-webkit-scrollbar { width: 3px; }
+.demo-phone-screen .wa-body::-webkit-scrollbar-track { background: transparent; }
+.demo-phone-screen .wa-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+/* Input bar */
+.wa-input-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #0c0c16;
+  border-top: 1px solid var(--border);
+}
+
+.wa-input {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 9px 16px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color var(--duration) var(--ease), background var(--duration) var(--ease);
+}
+
+/* Quick reply chips */
+.wa-chips-bar {
+  display: none;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(12,12,22,0.8);
+  border-top: 1px solid var(--border);
+}
+
+.wa-chips-bar.is-visible {
+  display: flex;
+}
+
+.wa-chip {
+  padding: 8px 16px;
+  background: rgba(59,130,246,0.08);
+  border: 1px solid rgba(59,130,246,0.25);
+  border-radius: 20px;
+  color: var(--accent-hover);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration) var(--ease);
+  white-space: nowrap;
+}
+
+.wa-chip:hover {
+  background: rgba(59,130,246,0.15);
+  border-color: rgba(59,130,246,0.5);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.wa-input--visual {
+  text-align: center;
+  color: rgba(255,255,255,0.2);
+  font-size: 0.8rem;
+  cursor: default;
+  display: none; /* Hidden by default */
+}
+
+/* Shown in try mode */
+.wa-input--visual.is-visible {
+  display: block;
+}
+
+/* ---- Benefits ---- */
+.demo-benefits {
+  padding: 60px 0 80px;
+  border-top: 1px solid var(--border);
+}
+
+.demo-benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.demo-benefit {
+  text-align: center;
+  padding: 28px 20px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.demo-benefit-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.demo-benefit h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.demo-benefit p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+/* CTA */
+.demo-cta {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.demo-cta-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.demo-cta-sub {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+/* ---- Responsive ---- */
+@media (min-width: 640px) {
+  .demo-hero-title { font-size: 3rem; }
+  .demo-benefits-grid { grid-template-columns: repeat(3, 1fr); }
+  .demo-rubro-tabs { flex-wrap: wrap; overflow: visible; }
+  .demo-rubro { flex: 1 1 calc(50% - 4px); min-width: 200px; }
+}
+
+@media (min-width: 960px) {
+  .demo-hero { padding: 120px 0 48px; }
+  .demo-hero-title { font-size: 3.4rem; }
+
+  .demo-layout {
+    grid-template-columns: 340px 1fr;
+    gap: 40px;
+  }
+
+  .demo-rubro-tabs {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .demo-rubro {
+    flex: none;
+    width: 100%;
+  }
+
+  .demo-phone { max-width: 400px; }
+  .demo-phone-screen .wa-body { min-height: 480px; max-height: 480px; }
+}
+
+@media (min-width: 1200px) {
+  .demo-layout { grid-template-columns: 360px 1fr; gap: 56px; }
+}
+
+/* ================================================
+   NEW FEATURES: Controls, Stats
+   ================================================ */
+
+/* ---- Demo Controls Section ---- */
+.demo-controls {
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---- Mode Toggle (AI vs Traditional) ---- */
+.demo-mode-toggle {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.demo-mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration) var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-mode-btn:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-glass-hover);
+  transform: translateY(-2px);
+}
+
+.demo-mode-btn.active {
+  background: linear-gradient(135deg, rgba(59,130,246,0.2) 0%, rgba(139,92,246,0.15) 100%);
+  border-color: var(--accent);
+  color: var(--text);
+  box-shadow: 0 4px 16px rgba(59,130,246,0.15);
+}
+
+.demo-mode-btn[data-mode="traditional"].active {
+  background: linear-gradient(135deg, rgba(239,68,68,0.15) 0%, rgba(239,68,68,0.1) 100%);
+  border-color: #ef4444;
+  box-shadow: 0 4px 16px rgba(239,68,68,0.15);
+}
+
+.demo-mode-icon {
+  font-size: 1.1rem;
+}
+
+.demo-mode-badge {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+/* ---- Live Stats ---- */
+.demo-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 16px 24px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.demo-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.demo-stat-icon {
+  font-size: 1.1rem;
+}
+
+.demo-stat-value {
+  font-weight: 700;
+  color: var(--accent);
+  font-family: var(--font-display);
+}
+
+/* Alert state for traditional mode */
+.demo-stat--alert .demo-stat-value {
+  color: #ef4444 !important;
+  font-size: 0.95rem;
+}
+
+.demo-stat--alert .demo-stat-icon {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.demo-stat-label {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.demo-stat-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border);
+}
+
+/* ---- Improved Typing Indicator ---- */
+.wa-typing {
+  display: flex !important;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 16px !important;
+  min-width: 60px;
+}
+
+.wa-typing span {
+  width: 8px;
+  height: 8px;
+  background: #8696a0;
+  border-radius: 50%;
+  animation: typingBounce 1.3s linear infinite;
+}
+
+.wa-typing span:nth-child(2) { animation-delay: 0.2s; }
+.wa-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-4px); }
+}
+
+/* ---- System Messages (Traditional Mode) ---- */
+.wa-msg--system .wa-bubble--system {
+  background: transparent;
+  border: 1px dashed rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.4);
+  font-style: italic;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 10px 14px;
+}
+
+.wa-msg--system {
+  align-self: center;
+  max-width: 95%;
+}
+
+/* ---- Responsive Controls ---- */
+@media (max-width: 640px) {
+  .demo-controls {
+    gap: 16px;
+  }
+  
+  .demo-stats {
+    gap: 16px;
+    padding: 12px 16px;
+  }
+  
+  .demo-stat-divider {
+    display: none;
+  }
+  
+  .demo-stat {
+    flex-direction: column;
+    text-align: center;
+    gap: 4px;
+  }
+  
+  .demo-mode-btn {
+    flex: 1 1 calc(50% - 6px);
+    justify-content: center;
+    padding: 10px 14px;
+    font-size: 0.8rem;
+  }
+  
+  .demo-mode-badge {
+    display: none;
+  }
+}

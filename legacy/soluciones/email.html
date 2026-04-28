@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Email Inteligente — INERTI</title>
+  <meta name="description" content="Mira en vivo cómo la IA de INERTI clasifica, responde y gestiona tu bandeja de entrada automáticamente. Elige un escenario y pruébalo.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#050508">
+
+  <link rel="icon" href="../assets/inerti-icon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="email.css">
+</head>
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="../" class="logo" aria-label="INERTI inicio">
+        <img class="logo-image" src="../assets/inerti-wordmark.png" alt="INERTI" width="120" height="40" decoding="async">
+      </a>
+      <nav class="nav-links" id="nav-links" aria-label="Navegación principal">
+        <a href="../#soluciones" class="nav-link">Soluciones</a>
+        <a href="../#demo-rubros" class="nav-link">Demo</a>
+        <a href="../#precios" class="nav-link">Precios</a>
+        <a href="../blog/" class="nav-link">Blog</a>
+        <a href="../#faq" class="nav-link">FAQ</a>
+      </nav>
+      <div class="navbar-right">
+        <a href="https://wa.link/lp8er3" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Agendar demo</a>
+        <button class="hamburger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ====== DEMO HERO ====== -->
+    <section class="demo-hero">
+      <div class="container">
+        <a href="../" class="demo-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+          Volver a inicio
+        </a>
+        <div class="demo-hero-content">
+          <span class="demo-badge-label">✉️ Nuevo módulo</span>
+          <h1 class="demo-hero-title"><span class="gradient-text">Email Inteligente</span> con IA</h1>
+          <p class="demo-hero-sub">Elige un escenario y mira cómo la IA clasifica, prioriza y responde tu correo automáticamente. Sin que tú levantes un dedo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== INTERACTIVE DEMO ====== -->
+    <section class="demo-interactive">
+      <div class="container">
+
+        <!-- Demo Controls -->
+        <div class="demo-controls">
+          <!-- Mode Toggle -->
+          <div class="demo-mode-toggle" id="demoModeToggle">
+            <button class="demo-mode-btn active" data-mode="ai" id="modeAi">
+              <span class="demo-mode-icon">✅</span>
+              <span class="demo-mode-label">Con INERTI</span>
+              <span class="demo-mode-badge">IA Activa</span>
+            </button>
+            <button class="demo-mode-btn" data-mode="traditional" id="modeTraditional">
+              <span class="demo-mode-icon">❌</span>
+              <span class="demo-mode-label">Sin IA</span>
+              <span class="demo-mode-badge">Gestión manual</span>
+            </button>
+          </div>
+
+          <!-- Live Stats -->
+          <div class="demo-stats" id="demoStats">
+            <div class="demo-stat">
+              <span class="demo-stat-icon" id="statEmailsIcon">📨</span>
+              <span class="demo-stat-value" id="statEmails">+847</span>
+              <span class="demo-stat-label" id="statEmailsLabel">emails clasificados hoy</span>
+            </div>
+            <div class="demo-stat-divider"></div>
+            <div class="demo-stat">
+              <span class="demo-stat-icon">⚡</span>
+              <span class="demo-stat-value" id="statResponseTime">&lt;3s</span>
+              <span class="demo-stat-label">tiempo de clasificación</span>
+            </div>
+            <div class="demo-stat-divider"></div>
+            <div class="demo-stat">
+              <span class="demo-stat-icon" id="statMissedIcon">🎯</span>
+              <span class="demo-stat-value" id="statMissedValue">0</span>
+              <span class="demo-stat-label" id="statMissedLabel">urgencias perdidas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-layout">
+
+          <!-- Left: Scenario tabs -->
+          <div class="demo-sidebar" id="demoSidebar">
+            <p class="demo-sidebar-label">Elige un escenario</p>
+            <div class="demo-scenario-tabs" role="tablist" aria-label="Escenarios disponibles" id="scenarioTabs">
+              <button class="demo-scenario active" type="button" role="tab" data-scenario="ecommerce" aria-selected="true">
+                <span class="demo-scenario-emoji">🛒</span>
+                <div>
+                  <span class="demo-scenario-name">Tienda Online</span>
+                  <span class="demo-scenario-desc">Pedidos, reclamos y proveedores</span>
+                </div>
+              </button>
+              <button class="demo-scenario" type="button" role="tab" data-scenario="consultora" aria-selected="false">
+                <span class="demo-scenario-emoji">💼</span>
+                <div>
+                  <span class="demo-scenario-name">Consultora</span>
+                  <span class="demo-scenario-desc">Cotizaciones y agendamiento</span>
+                </div>
+              </button>
+              <button class="demo-scenario" type="button" role="tab" data-scenario="dental" aria-selected="false">
+                <span class="demo-scenario-emoji">🦷</span>
+                <div>
+                  <span class="demo-scenario-name">Clínica Dental</span>
+                  <span class="demo-scenario-desc">Citas y post-operatorio</span>
+                </div>
+              </button>
+              <button class="demo-scenario" type="button" role="tab" data-scenario="restaurante" aria-selected="false">
+                <span class="demo-scenario-emoji">🍽️</span>
+                <div>
+                  <span class="demo-scenario-name">Restaurante</span>
+                  <span class="demo-scenario-desc">Reservas y pedidos</span>
+                </div>
+              </button>
+              <button class="demo-scenario" type="button" role="tab" data-scenario="inmobiliaria" aria-selected="false">
+                <span class="demo-scenario-emoji">🏠</span>
+                <div>
+                  <span class="demo-scenario-name">Inmobiliaria</span>
+                  <span class="demo-scenario-desc">Visitas y contratos</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Email App Mockup -->
+          <div class="demo-email-wrap">
+            <div class="email-app" id="emailApp">
+              <!-- App Header -->
+              <div class="email-app-header">
+                <div class="email-app-brand">
+                  <span class="email-app-logo">📧</span>
+                  <span class="email-app-title">Bandeja de Entrada</span>
+                  <span class="email-app-badge" id="emailBadge">INERTI</span>
+                </div>
+                <div class="email-app-search">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                  <span>Buscar en correos...</span>
+                </div>
+              </div>
+
+              <!-- App Body -->
+              <div class="email-app-body">
+                <!-- Sidebar inside app -->
+                <div class="email-app-filters" id="emailFilters">
+                  <div class="email-filter active" data-filter="all">
+                    <span>📥</span>
+                    <span>Recibidos</span>
+                    <span class="email-filter-count" id="filterCountAll">0</span>
+                  </div>
+                  <div class="email-filter" data-filter="urgent">
+                    <span>🔴</span>
+                    <span>Urgentes</span>
+                    <span class="email-filter-count" id="filterCountUrgent">0</span>
+                  </div>
+                  <div class="email-filter" data-filter="client">
+                    <span>👤</span>
+                    <span>Clientes</span>
+                    <span class="email-filter-count" id="filterCountClient">0</span>
+                  </div>
+                  <div class="email-filter" data-filter="provider">
+                    <span>🏭</span>
+                    <span>Proveedores</span>
+                    <span class="email-filter-count" id="filterCountProvider">0</span>
+                  </div>
+                  <div class="email-filter" data-filter="internal">
+                    <span>📢</span>
+                    <span>Internos</span>
+                    <span class="email-filter-count" id="filterCountInternal">0</span>
+                  </div>
+                  <div class="email-filter" data-filter="spam">
+                    <span>🚫</span>
+                    <span>Spam</span>
+                    <span class="email-filter-count" id="filterCountSpam">0</span>
+                  </div>
+                </div>
+
+                <!-- Email List -->
+                <div class="email-list" id="emailList" aria-live="polite">
+                  <div class="email-list-empty" id="emailListEmpty">
+                    <span class="email-list-empty-icon">📭</span>
+                    <p>Selecciona un escenario para ver los correos entrantes</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- App Footer / Status -->
+              <div class="email-app-footer" id="emailAppFooter">
+                <span class="email-status-text" id="emailStatusText">Esperando correos...</span>
+                <div class="email-progress" id="emailProgressWrap">
+                  <div class="email-progress-bar" id="emailProgressBar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== BENEFITS + CTA ====== -->
+    <section class="demo-benefits">
+      <div class="container">
+        <div class="demo-benefits-grid">
+          <div class="demo-benefit">
+            <span class="demo-benefit-icon">🏷️</span>
+            <h3>Clasificación automática</h3>
+            <p>Cada email llega etiquetado por urgencia, tipo y remitente. Sin que tú hagas nada.</p>
+          </div>
+          <div class="demo-benefit">
+            <span class="demo-benefit-icon">✍️</span>
+            <h3>Respuestas inteligentes</h3>
+            <p>La IA responde consultas frecuentes, confirma citas y deriva lo complejo a ti.</p>
+          </div>
+          <div class="demo-benefit">
+            <span class="demo-benefit-icon">🎯</span>
+            <h3>Nada se pierde</h3>
+            <p>Los urgentes se priorizan, el spam se filtra y lo interno se organiza solo.</p>
+          </div>
+        </div>
+        <div class="demo-cta">
+          <h2 class="demo-cta-title">¿Quieres esto para tu negocio?</h2>
+          <p class="demo-cta-sub">Te mostramos cómo se adapta a tu operación específica. Sin compromiso.</p>
+          <a href="https://wa.link/lp8er3" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Quiero esto para mi negocio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="logo" aria-label="INERTI">
+        <img class="logo-image footer-logo" src="../assets/inerti-wordmark.png" alt="INERTI" width="160" height="52" decoding="async">
+      </div>
+      <div class="footer-center">
+        <p class="footer-text">Concepción, Chile · Siempre presente</p>
+        <a href="mailto:hola@inerti.cl" class="footer-email">hola@inerti.cl</a>
+      </div>
+      <p class="footer-copy">© 2026 INERTI</p>
+    </div>
+  </footer>
+
+  <script src="email.js"></script>
+</body>
+</html>

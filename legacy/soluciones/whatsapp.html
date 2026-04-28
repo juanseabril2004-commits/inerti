@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Agente WhatsApp — INERTI</title>
+  <meta name="description" content="Mira en vivo cómo el agente de WhatsApp con IA de INERTI responde clientes de forma automática. Elige un rubro y pruébalo tú mismo.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#050508">
+
+  <link rel="icon" href="../assets/inerti-icon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="whatsapp.css">
+</head>
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="../" class="logo" aria-label="INERTI inicio">
+        <img class="logo-image" src="../assets/inerti-wordmark.png" alt="INERTI" width="120" height="40" decoding="async">
+      </a>
+      <nav class="nav-links" id="nav-links" aria-label="Navegación principal">
+        <a href="../#soluciones" class="nav-link">Soluciones</a>
+        <a href="../#demo-rubros" class="nav-link">Demo</a>
+        <a href="../#precios" class="nav-link">Precios</a>
+        <a href="../blog/" class="nav-link">Blog</a>
+        <a href="../#faq" class="nav-link">FAQ</a>
+      </nav>
+      <div class="navbar-right">
+        <a href="https://wa.link/lp8er3" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Agendar demo</a>
+        <button class="hamburger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ====== DEMO HERO ====== -->
+    <section class="demo-hero">
+      <div class="container">
+        <a href="../" class="demo-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+          Volver a inicio
+        </a>
+        <div class="demo-hero-content">
+          <span class="demo-badge-label">★ Producto estrella</span>
+          <h1 class="demo-hero-title">Agente de <span class="gradient-text">WhatsApp</span> con IA</h1>
+          <p class="demo-hero-sub">Elige un rubro y mira una conversación real. Luego prueba el modo interactivo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== INTERACTIVE DEMO ====== -->
+    <section class="demo-interactive">
+      <div class="container">
+        
+        <!-- Demo Controls -->
+        <div class="demo-controls">
+          <!-- Mode Toggle: Sin IA vs Con IA -->
+          <div class="demo-mode-toggle" id="demoModeToggle">
+            <button class="demo-mode-btn active" data-mode="ai" id="modeAi">
+              <span class="demo-mode-icon">✅</span>
+              <span class="demo-mode-label">Con INERTI</span>
+              <span class="demo-mode-badge">IA Activa</span>
+            </button>
+            <button class="demo-mode-btn" data-mode="traditional" id="modeTraditional">
+              <span class="demo-mode-icon">❌</span>
+              <span class="demo-mode-label">Sin IA</span>
+              <span class="demo-mode-badge">Atención Tradicional</span>
+            </button>
+          </div>
+
+          <!-- Live Stats -->
+          <div class="demo-stats" id="demoStats">
+            <div class="demo-stat" id="statConversationsWrap">
+              <span class="demo-stat-icon" id="statConversationsIcon">💬</span>
+              <span class="demo-stat-value" id="statConversations">+1,200</span>
+              <span class="demo-stat-label" id="statConversationsLabel">conversaciones hoy</span>
+            </div>
+            <div class="demo-stat-divider"></div>
+            <div class="demo-stat">
+              <span class="demo-stat-icon">⚡</span>
+              <span class="demo-stat-value" id="statResponseTime">&lt;2s</span>
+              <span class="demo-stat-label">tiempo de respuesta</span>
+            </div>
+            <div class="demo-stat-divider"></div>
+            <div class="demo-stat">
+              <span class="demo-stat-icon" id="statAvailabilityIcon">🟢</span>
+              <span class="demo-stat-value" id="statAvailabilityValue">24/7</span>
+              <span class="demo-stat-label" id="statAvailabilityLabel">siempre disponible</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-layout">
+
+          <!-- Left: Rubro tabs -->
+          <div class="demo-sidebar" id="demoSidebar">
+            <p class="demo-sidebar-label">Elige un rubro</p>
+            <div class="demo-rubro-tabs" role="tablist" aria-label="Rubros disponibles" id="rubroTabs">
+              <button class="demo-rubro active" type="button" role="tab" data-rubro="ferreteria" aria-selected="true">
+                <span class="demo-rubro-emoji">🔩</span>
+                <div>
+                  <span class="demo-rubro-name">Ferretería Don Pato</span>
+                  <span class="demo-rubro-desc">Precio + stock en segundos</span>
+                </div>
+              </button>
+              <button class="demo-rubro" type="button" role="tab" data-rubro="veterinaria" aria-selected="false">
+                <span class="demo-rubro-emoji">🐾</span>
+                <div>
+                  <span class="demo-rubro-name">Veterinaria Huellitas Sur</span>
+                  <span class="demo-rubro-desc">Agenda automática</span>
+                </div>
+              </button>
+              <button class="demo-rubro" type="button" role="tab" data-rubro="taller" aria-selected="false">
+                <span class="demo-rubro-emoji">🔧</span>
+                <div>
+                  <span class="demo-rubro-name">Taller El Volante</span>
+                  <span class="demo-rubro-desc">Cotiza sin soltar la herramienta</span>
+                </div>
+              </button>
+              <button class="demo-rubro" type="button" role="tab" data-rubro="restaurante" aria-selected="false">
+                <span class="demo-rubro-emoji">🍽</span>
+                <div>
+                  <span class="demo-rubro-name">Cocinería La Esquina</span>
+                  <span class="demo-rubro-desc">Menú y delivery rápido</span>
+                </div>
+              </button>
+              <button class="demo-rubro" type="button" role="tab" data-rubro="dental" aria-selected="false">
+                <span class="demo-rubro-emoji">🦷</span>
+                <div>
+                  <span class="demo-rubro-name">Dental Sonría</span>
+                  <span class="demo-rubro-desc">Horas sin llamar</span>
+                </div>
+              </button>
+              <button class="demo-rubro" type="button" role="tab" data-rubro="inmobiliaria" aria-selected="false">
+                <span class="demo-rubro-emoji">🏠</span>
+                <div>
+                  <span class="demo-rubro-name">Inmobiliaria Raíces Sur</span>
+                  <span class="demo-rubro-desc">Arriendos y visitas al instante</span>
+                </div>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Right: Phone mockup -->
+          <div class="demo-phone-wrap">
+            <div class="demo-phone">
+              <div class="demo-phone-notch"></div>
+              <div class="demo-phone-screen">
+                <!-- Status bar -->
+                <div class="wa-statusbar" aria-hidden="true">
+                  <span>10:23</span>
+                  <div class="wa-statusbar-icons">
+                    <span class="wa-statusbar-signal">●●●●○</span>
+                    <span>🔋</span>
+                  </div>
+                </div>
+                <!-- WA Header -->
+                <div class="wa-header">
+                  <div class="wa-avatar" id="waAvatar">🔩</div>
+                  <div>
+                    <div class="wa-name" id="waName">Ferretería Don Pato</div>
+                    <div class="wa-status"><span class="wa-dot"></span><span id="waStatus">En línea</span></div>
+                  </div>
+                </div>
+                <!-- Chat body -->
+                <div class="wa-body" id="waBody" aria-live="polite"></div>
+                <!-- Quick reply chips (shown in try mode) -->
+                <div class="wa-chips-bar" id="waChipsBar"></div>
+                <!-- Input bar (visual only) -->
+                <div class="wa-input-bar">
+                  <div class="wa-input wa-input--visual">Elige una opción arriba ☝️</div>
+                </div>
+                <!-- Try it mode toggle -->
+                <button class="demo-try-btn" id="tryModeBtn" type="button">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                  Pruébalo tú mismo
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== BENEFITS + CTA ====== -->
+    <section class="demo-benefits">
+      <div class="container">
+        <div class="demo-benefits-grid">
+          <div class="demo-benefit">
+            <span class="demo-benefit-icon">🕐</span>
+            <h3>Responde 24/7</h3>
+            <p>Tu negocio nunca duerme. Responde clientes a las 3 AM sin que tú estés.</p>
+          </div>
+          <div class="demo-benefit">
+            <span class="demo-benefit-icon">💬</span>
+            <h3>Mensajes ilimitados</h3>
+            <p>Sin cobro por conversación. Todas las consultas que lleguen, resueltas.</p>
+          </div>
+          <div class="demo-benefit">
+            <span class="demo-benefit-icon">⚡</span>
+            <h3>Listo en 5 días</h3>
+            <p>Nos encargamos de todo. Tu asistente opera en días, no semanas.</p>
+          </div>
+        </div>
+        <div class="demo-cta">
+          <h2 class="demo-cta-title">¿Quieres esto para tu negocio?</h2>
+          <p class="demo-cta-sub">Te mostramos cómo se adapta a tu rubro específico. Sin compromiso.</p>
+          <a href="https://wa.link/lp8er3" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Quiero esto para mi negocio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="logo" aria-label="INERTI">
+        <img class="logo-image footer-logo" src="../assets/inerti-wordmark.png" alt="INERTI" width="160" height="52" decoding="async">
+      </div>
+      <div class="footer-center">
+        <p class="footer-text">Concepción, Chile · Siempre presente</p>
+        <a href="mailto:hola@inerti.cl" class="footer-email">hola@inerti.cl</a>
+      </div>
+      <p class="footer-copy">© 2026 INERTI</p>
+    </div>
+  </footer>
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+  <script src="whatsapp.js"></script>
+</body>
+</html>

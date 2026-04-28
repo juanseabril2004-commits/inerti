@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Captura de Leads — INERTI</title>
+  <meta name="description" content="Mira en vivo cómo la IA de INERTI identifica, califica y organiza tus leads automáticamente desde WhatsApp, web y redes sociales.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#050508">
+
+  <link rel="icon" href="../assets/inerti-icon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="leads.css">
+</head>
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="../" class="logo" aria-label="INERTI inicio">
+        <img class="logo-image" src="../assets/inerti-wordmark.png" alt="INERTI" width="120" height="40" decoding="async">
+      </a>
+      <nav class="nav-links" id="nav-links" aria-label="Navegación principal">
+        <a href="../#soluciones" class="nav-link">Soluciones</a>
+        <a href="../#demo-rubros" class="nav-link">Demo</a>
+        <a href="../#precios" class="nav-link">Precios</a>
+        <a href="../blog/" class="nav-link">Blog</a>
+        <a href="../#faq" class="nav-link">FAQ</a>
+      </nav>
+      <div class="navbar-right">
+        <a href="https://wa.link/lp8er3" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Agendar demo</a>
+        <button class="hamburger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ====== DEMO HERO ====== -->
+    <section class="demo-hero">
+      <div class="container">
+        <a href="../" class="demo-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+          Volver a inicio
+        </a>
+        <div class="demo-hero-content">
+          <span class="demo-badge-label">🎯 Nuevo módulo</span>
+          <h1 class="demo-hero-title"><span class="gradient-text">Captura de Leads</span> con IA</h1>
+          <p class="demo-hero-sub">Elige un rubro y mira cómo la IA identifica, califica y organiza tus prospectos automáticamente. Listos para cerrar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== INTERACTIVE DEMO ====== -->
+    <section class="demo-interactive">
+      <div class="container">
+
+        <!-- Demo Controls -->
+        <div class="demo-controls">
+          <!-- Mode Toggle -->
+          <div class="demo-mode-toggle" id="demoModeToggle">
+            <button class="demo-mode-btn active" data-mode="ai" id="modeAi">
+              <span class="demo-mode-icon">✅</span>
+              <span class="demo-mode-label">Con INERTI</span>
+              <span class="demo-mode-badge">IA Activa</span>
+            </button>
+            <button class="demo-mode-btn" data-mode="traditional" id="modeTraditional">
+              <span class="demo-mode-icon">❌</span>
+              <span class="demo-mode-label">Sin IA</span>
+              <span class="demo-mode-badge">Gestión manual</span>
+            </button>
+          </div>
+
+          <!-- Live Stats -->
+          <div class="demo-stats" id="demoStats">
+            <div class="demo-stat">
+              <span class="demo-stat-icon" id="statLeadsIcon">🎯</span>
+              <span class="demo-stat-value" id="statLeads">+32</span>
+              <span class="demo-stat-label" id="statLeadsLabel">leads capturados hoy</span>
+            </div>
+            <div class="demo-stat-divider"></div>
+            <div class="demo-stat">
+              <span class="demo-stat-icon">⚡</span>
+              <span class="demo-stat-value" id="statResponseTime">&lt;5s</span>
+              <span class="demo-stat-label">tiempo de calificación</span>
+            </div>
+            <div class="demo-stat-divider"></div>
+            <div class="demo-stat">
+              <span class="demo-stat-icon" id="statMissedIcon">✅</span>
+              <span class="demo-stat-value" id="statMissedValue">0</span>
+              <span class="demo-stat-label" id="statMissedLabel">leads perdidos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-layout">
+
+          <!-- Left: Scenario tabs -->
+          <div class="demo-sidebar" id="demoSidebar">
+            <p class="demo-sidebar-label">Elige un rubro</p>
+            <div class="demo-scenario-tabs" role="tablist" aria-label="Escenarios disponibles" id="scenarioTabs">
+              <button class="demo-scenario active" type="button" role="tab" data-scenario="inmobiliaria" aria-selected="true">
+                <span class="demo-scenario-emoji">🏠</span>
+                <div>
+                  <span class="demo-scenario-name">Inmobiliaria Raíces Sur</span>
+                  <span class="demo-scenario-desc">Visitas y cotizaciones</span>
+                </div>
+              </button>
+              <button class="demo-scenario" type="button" role="tab" data-scenario="automotriz" aria-selected="false">
+                <span class="demo-scenario-emoji">🚗</span>
+                <div>
+                  <span class="demo-scenario-name">Automotriz Surmotors</span>
+                  <span class="demo-scenario-desc">Test drive y financiamiento</span>
+                </div>
+              </button>
+              <button class="demo-scenario" type="button" role="tab" data-scenario="educacion" aria-selected="false">
+                <span class="demo-scenario-emoji">🎓</span>
+                <div>
+                  <span class="demo-scenario-name">Instituto Eduka</span>
+                  <span class="demo-scenario-desc">Matrículas y consultas</span>
+                </div>
+              </button>
+              <button class="demo-scenario" type="button" role="tab" data-scenario="dental" aria-selected="false">
+                <span class="demo-scenario-emoji">🦷</span>
+                <div>
+                  <span class="demo-scenario-name">Dental Sonría</span>
+                  <span class="demo-scenario-desc">Citas y presupuestos</span>
+                </div>
+              </button>
+              <button class="demo-scenario" type="button" role="tab" data-scenario="muebles" aria-selected="false">
+                <span class="demo-scenario-emoji">🛋️</span>
+                <div>
+                  <span class="demo-scenario-name">Muebles El Roble</span>
+                  <span class="demo-scenario-desc">Pedidos y delivery</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Leads Pipeline Mockup -->
+          <div class="demo-leads-wrap">
+            <div class="leads-app" id="leadsApp">
+              <!-- App Header -->
+              <div class="leads-app-header">
+                <div class="leads-app-brand">
+                  <span class="leads-app-logo">📊</span>
+                  <span class="leads-app-title">Pipeline de Leads</span>
+                  <span class="leads-app-badge" id="leadsBadge">INERTI</span>
+                </div>
+                <div class="leads-app-search">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                  <span>Buscar leads...</span>
+                </div>
+              </div>
+
+              <!-- App Body -->
+              <div class="leads-app-body" id="leadsAppBody">
+                <!-- AI Mode: Kanban Columns -->
+                <div class="leads-board" id="leadsBoard">
+                  <div class="leads-column" data-column="nuevo">
+                    <div class="leads-column-header">
+                      <span class="leads-column-dot dot-nuevo"></span>
+                      <span class="leads-column-name">Nuevos</span>
+                      <span class="leads-column-count" id="countNuevo">0</span>
+                    </div>
+                    <div class="leads-column-content" id="colNuevo"></div>
+                  </div>
+                  <div class="leads-column" data-column="calificado">
+                    <div class="leads-column-header">
+                      <span class="leads-column-dot dot-calificado"></span>
+                      <span class="leads-column-name">Calificados</span>
+                      <span class="leads-column-count" id="countCalificado">0</span>
+                    </div>
+                    <div class="leads-column-content" id="colCalificado"></div>
+                  </div>
+                  <div class="leads-column" data-column="listo">
+                    <div class="leads-column-header">
+                      <span class="leads-column-dot dot-listo"></span>
+                      <span class="leads-column-name">Listos para cerrar</span>
+                      <span class="leads-column-count" id="countListo">0</span>
+                    </div>
+                    <div class="leads-column-content" id="colListo"></div>
+                  </div>
+                </div>
+
+                <!-- Traditional Mode: Flat List -->
+                <div class="leads-list" id="leadsList" aria-live="polite">
+                  <div class="leads-list-empty" id="leadsListEmpty">
+                    <span class="leads-list-empty-icon">📭</span>
+                    <p>Selecciona un escenario para ver los leads entrantes</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- App Footer / Status -->
+              <div class="leads-app-footer" id="leadsAppFooter">
+                <span class="leads-status-text" id="leadsStatusText">Esperando leads...</span>
+                <div class="leads-progress" id="leadsProgressWrap">
+                  <div class="leads-progress-bar" id="leadsProgressBar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== BENEFITS + CTA ====== -->
+    <section class="demo-benefits">
+      <div class="container">
+        <div class="demo-benefits-grid">
+          <div class="demo-benefit">
+            <span class="demo-benefit-icon">🎯</span>
+            <h3>Calificación automática</h3>
+            <p>La IA lee cada conversación y asigna score sin que hagas nada.</p>
+          </div>
+          <div class="demo-benefit">
+            <span class="demo-benefit-icon">🔔</span>
+            <h3>Sin leads perdidos</h3>
+            <p>Todos entran al funnel, sin importar el canal de origen.</p>
+          </div>
+          <div class="demo-benefit">
+            <span class="demo-benefit-icon">💼</span>
+            <h3>Listos para cerrar</h3>
+            <p>Llegan con contexto, intención y prioridad ya definidos.</p>
+          </div>
+        </div>
+        <div class="demo-cta">
+          <h2 class="demo-cta-title">¿Quieres esto para tu negocio?</h2>
+          <p class="demo-cta-sub">Te mostramos cómo se adapta a tu operación específica. Sin compromiso.</p>
+          <a href="https://wa.link/lp8er3" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Quiero esto para mi negocio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="logo" aria-label="INERTI">
+        <img class="logo-image footer-logo" src="../assets/inerti-wordmark.png" alt="INERTI" width="160" height="52" decoding="async">
+      </div>
+      <div class="footer-center">
+        <p class="footer-text">Concepción, Chile · Siempre presente</p>
+        <a href="mailto:hola@inerti.cl" class="footer-email">hola@inerti.cl</a>
+      </div>
+      <p class="footer-copy">© 2026 INERTI</p>
+    </div>
+  </footer>
+
+  <script src="leads.js"></script>
+</body>
+</html>
