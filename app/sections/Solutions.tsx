@@ -107,14 +107,6 @@ export default function Solutions() {
   const [noTransition, setNoTransition] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Touch/drag state (refs to avoid React re-renders during scroll)
-  const isDraggingRef = useRef(false);
-  const dragStartX = useRef(0);
-  const dragStartY = useRef(0);
-  const dragCurrentX = useRef(0);
-  const dragCurrentY = useRef(0);
-  const hasMoved = useRef(false);
-  const isVerticalScroll = useRef(false);
   const lastWheelTime = useRef(0);
   const jumpTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -207,70 +199,73 @@ export default function Solutions() {
     scheduleJumpIfNeeded(target);
   };
 
-  // Touch / Mouse drag handlers
-  const onPointerDown = (e: React.PointerEvent) => {
-    dragStartX.current = e.clientX;
-    dragStartY.current = e.clientY;
-    dragCurrentX.current = e.clientX;
-    dragCurrentY.current = e.clientY;
-    hasMoved.current = false;
-    isVerticalScroll.current = false;
-    isDraggingRef.current = false;
-    const el = e.currentTarget as HTMLElement;
-    el.style.cursor = "grabbing";
-    el.setPointerCapture?.(e.pointerId);
-  };
+  // Native touch swipe for mobile (bypasses pointer-event quirks + allows preventDefault on horizontal drag)
+  const goNextRef = useRef(goNext);
+  const goPrevRef = useRef(goPrev);
+  useEffect(() => {
+    goNextRef.current = goNext;
+    goPrevRef.current = goPrev;
+  }, [goNext, goPrev]);
 
-  const onPointerMove = (e: React.PointerEvent) => {
-    if (isVerticalScroll.current) return;
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
 
-    dragCurrentX.current = e.clientX;
-    dragCurrentY.current = e.clientY;
-    const diffX = dragCurrentX.current - dragStartX.current;
-    const diffY = dragCurrentY.current - dragStartY.current;
+    let startX = 0;
+    let startY = 0;
+    let currentX = 0;
+    let direction: "none" | "horizontal" | "vertical" = "none";
+    const SWIPE_THRESHOLD = 28;
 
-    // On first meaningful movement, decide direction (low threshold for responsiveness)
-    if (!hasMoved.current && (Math.abs(diffX) > 4 || Math.abs(diffY) > 4)) {
-      hasMoved.current = true;
-      if (Math.abs(diffY) > Math.abs(diffX)) {
-        // Vertical — release capture so browser scrolls natively
-        isVerticalScroll.current = true;
-        isDraggingRef.current = false;
-        const el = e.currentTarget as HTMLElement;
-        el.style.cursor = "grab";
-        el.releasePointerCapture?.(e.pointerId);
-        return;
+    const onTouchStart = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      startX = touch.clientX;
+      startY = touch.clientY;
+      currentX = touch.clientX;
+      direction = "none";
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      currentX = touch.clientX;
+      const diffX = currentX - startX;
+      const diffY = touch.clientY - startY;
+
+      if (direction === "none" && (Math.abs(diffX) > 4 || Math.abs(diffY) > 4)) {
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+          direction = "horizontal";
+        } else {
+          direction = "vertical";
+        }
       }
-      // Horizontal
-      isDraggingRef.current = true;
-    }
-  };
 
-  const onPointerUp = (e: React.PointerEvent) => {
-    const el = e.currentTarget as HTMLElement;
-    el.style.cursor = "grab";
+      if (direction === "horizontal") {
+        e.preventDefault();
+      }
+    };
 
-    if (isVerticalScroll.current || !isDraggingRef.current) {
-      isDraggingRef.current = false;
-      return;
-    }
+    const onTouchEnd = () => {
+      if (direction === "horizontal") {
+        const diff = currentX - startX;
+        if (diff < -SWIPE_THRESHOLD) {
+          goNextRef.current();
+        } else if (diff > SWIPE_THRESHOLD) {
+          goPrevRef.current();
+        }
+      }
+      direction = "none";
+    };
 
-    isDraggingRef.current = false;
-    const diff = dragCurrentX.current - dragStartX.current;
-    const threshold = Math.min(40, Math.max(24, dims.cardWidth * 0.10));
-    if (diff < -threshold) {
-      goNext();
-    } else if (diff > threshold) {
-      goPrev();
-    }
-  };
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: false });
+    el.addEventListener("touchend", onTouchEnd);
 
-  const onPointerLeave = (e: React.PointerEvent) => {
-    if (isDraggingRef.current) {
-      isDraggingRef.current = false;
-      (e.currentTarget as HTMLElement).style.cursor = "grab";
-    }
-  };
+    return () => {
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove", onTouchMove);
+      el.removeEventListener("touchend", onTouchEnd);
+    };
+  }, []);
 
   // Keyboard navigation
   useEffect(() => {
@@ -349,16 +344,7 @@ export default function Solutions() {
           <div
             ref={wrapperRef}
             className="overflow-hidden px-5 md:px-8"
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={onPointerUp}
-            onPointerLeave={onPointerLeave}
             onWheel={onWheel}
-            style={{
-              cursor: "grab",
-              touchAction: "pan-y",
-              overscrollBehaviorX: "contain",
-            }}
           >
             {/* Track */}
             <div
