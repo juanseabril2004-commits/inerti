@@ -110,37 +110,38 @@ export default function Solutions() {
   const lastWheelTime = useRef(0);
   const jumpTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Calculate dimensions
+  // Calculate dimensions via ResizeObserver for accuracy during breakpoint transitions
   useEffect(() => {
-    const update = () => {
-      const w = window.innerWidth;
-      const wrapper = wrapperRef.current;
-      let containerW = wrapper?.clientWidth || w;
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
 
-      // Subtract horizontal padding so the card centres in the *visible* area
-      if (wrapper) {
-        const style = window.getComputedStyle(wrapper);
-        const pl = parseFloat(style.paddingLeft) || 0;
-        const pr = parseFloat(style.paddingRight) || 0;
-        containerW -= pl + pr;
+    const lastWidthRef = { current: 0 };
+    const ro = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const w = window.innerWidth;
+        const cr = entry.contentRect;
+        const containerW = cr.width;
+        // Ignore height-only changes (Chrome mobile toolbar show/hide)
+        if (Math.abs(containerW - lastWidthRef.current) < 1) return;
+        lastWidthRef.current = containerW;
+
+        const cardW = w < 768 ? Math.min(320, containerW * 0.82) : 400;
+        const g = w < 768 ? 16 : 24;
+        setDims((prev) => {
+          if (
+            prev.containerWidth === containerW &&
+            prev.cardWidth === cardW &&
+            prev.gap === g
+          ) {
+            return prev;
+          }
+          return { containerWidth: containerW, cardWidth: cardW, gap: g };
+        });
       }
+    });
 
-      const cardW = w < 768 ? Math.min(320, containerW * 0.82) : 400;
-      const g = w < 768 ? 16 : 24;
-      setDims((prev) => {
-        if (
-          prev.containerWidth === containerW &&
-          prev.cardWidth === cardW &&
-          prev.gap === g
-        ) {
-          return prev;
-        }
-        return { containerWidth: containerW, cardWidth: cardW, gap: g };
-      });
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
+    ro.observe(wrapper);
+    return () => ro.disconnect();
   }, []);
 
   const centerOffset = dims.containerWidth > 0

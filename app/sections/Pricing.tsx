@@ -2,8 +2,6 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 
-import { motion, useInView } from "motion/react";
-
 const basePlans = [
   {
     id: "basico",
@@ -89,9 +87,6 @@ const SAFE_START = BASE_LEN;
 const SAFE_END = BASE_LEN * 2 - 1;
 
 export default function Pricing() {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(BLOCK0_START + 1);
   const [dims, setDims] = useState({ containerWidth: 0, cardWidth: 320, gap: 20 });
@@ -106,12 +101,16 @@ export default function Pricing() {
     const wrapper = wrapperRef.current;
     if (!wrapper) return;
 
+    const lastWidthRef = { current: 0 };
     const ro = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const w = window.innerWidth;
         const cr = entry.contentRect;
-        // contentRect.width already excludes padding — matches our visible area
         const containerW = cr.width;
+        // Ignore height-only changes (Chrome mobile toolbar show/hide)
+        if (Math.abs(containerW - lastWidthRef.current) < 1) return;
+        lastWidthRef.current = containerW;
+
         const cardW = w < 768 ? Math.min(320, containerW * 0.82) : 340;
         const g = w < 768 ? 16 : 24;
 
@@ -362,15 +361,7 @@ export default function Pricing() {
                     className="shrink-0"
                     style={{ width: dims.cardWidth }}
                   >
-                    <motion.div
-                      ref={i === BLOCK0_START ? sectionRef : null}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{
-                        duration: 0.6,
-                        delay: realIdx * 0.15,
-                        ease: [0, 0, 0.2, 1] as [number, number, number, number],
-                      }}
+                    <div
                       className={`group relative flex h-full flex-col rounded-3xl border p-6 duration-500 md:p-8 ${plan.featured && isCenter ? "pt-10 md:pt-12" : ""}`}
                       style={{
                         borderColor: isCenter ? `${plan.color}35` : "rgba(255,255,255,0.06)",
@@ -455,7 +446,7 @@ export default function Pricing() {
                       >
                         {plan.cta}
                       </a>
-                    </motion.div>
+                    </div>
                   </div>
                 );
               })}
