@@ -6,7 +6,7 @@ import Spotlight from "@/app/components/aceternity/Spotlight";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-svh items-center overflow-hidden pt-8 pb-24 md:pt-12 md:pb-28">
+    <section className="relative flex overflow-hidden pt-28 pb-24 md:min-h-svh md:items-center md:pt-12 md:pb-28">
       {/* Spotlight effect */}
       <Spotlight
         className="-top-40 left-0 md:-top-20 md:left-60"
