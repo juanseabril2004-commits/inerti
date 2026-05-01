@@ -1,26 +1,16 @@
 "use client";
 
 import BlurFade from "@/app/components/magicui/BlurFade";
-import Particles from "@/app/components/magicui/Particles";
 import ShimmerButton from "@/app/components/magicui/ShimmerButton";
 import Spotlight from "@/app/components/aceternity/Spotlight";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-dvh items-center overflow-hidden pt-8 pb-24 md:pt-12 md:pb-28">
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-8 pb-24 md:pt-12 md:pb-28">
       {/* Spotlight effect */}
       <Spotlight
         className="-top-40 left-0 md:-top-20 md:left-60"
         fill="rgba(59,130,246,0.15)"
-      />
-
-      {/* Neural particles background */}
-      <Particles
-        className="z-0 opacity-60"
-        quantity={60}
-        color="#3b82f6"
-        staticity={40}
-        ease={30}
       />
 
       {/* Gradient mesh background */}

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow, Inter } from "next/font/google";
 import "./globals.css";
+import GlobalParticles from "@/app/components/GlobalParticles";
 
 const barlow = Barlow({
   variable: "--font-barlow",
@@ -55,6 +56,7 @@ export default function RootLayout({
       className={`${barlow.variable} ${inter.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-[#050508] text-[#f0f2f5] font-[family-name:var(--font-inter)]">
+        <GlobalParticles quantity={40} opacity={0.35} />
         {children}
       </body>
     </html>
