@@ -54,16 +54,6 @@ export default function Hero() {
 
       <div className="relative z-[2] mx-auto flex max-w-[800px] flex-col items-center px-5 text-center">
         <BlurFade delay={0.1} duration={0.8} yOffset={8}>
-          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(59,130,246,0.2)] bg-[rgba(59,130,246,0.08)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#3b82f6]">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#3b82f6] opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#3b82f6]" />
-            </span>
-            Soluciones de IA para PyMEs · Concepción, Chile
-          </p>
-        </BlurFade>
-
-        <BlurFade delay={0.25} duration={0.8} yOffset={8}>
           <h1 className="mb-7 font-[family-name:var(--font-barlow)] text-5xl font-black leading-[1.08] tracking-tight md:text-7xl lg:text-8xl">
             La <span className="gradient-text">IA que trabaja</span>
             <br />
@@ -135,7 +125,7 @@ export default function Hero() {
               ))}
             </div>
             <div className="text-sm text-[#7a8ba5]">
-              <span className="font-semibold text-white">+200 negocios</span> ya usan INERTI
+              <span className="font-semibold text-white">Veterinarias e inmobiliarias</span> de Concepción ya usan INERTI
             </div>
           </div>
         </BlurFade>

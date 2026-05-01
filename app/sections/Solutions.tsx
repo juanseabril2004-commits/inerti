@@ -114,7 +114,17 @@ export default function Solutions() {
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
-      const containerW = wrapperRef.current?.clientWidth || w;
+      const wrapper = wrapperRef.current;
+      let containerW = wrapper?.clientWidth || w;
+
+      // Subtract horizontal padding so the card centres in the *visible* area
+      if (wrapper) {
+        const style = window.getComputedStyle(wrapper);
+        const pl = parseFloat(style.paddingLeft) || 0;
+        const pr = parseFloat(style.paddingRight) || 0;
+        containerW -= pl + pr;
+      }
+
       const cardW = w < 768 ? Math.min(320, containerW * 0.82) : 400;
       const g = w < 768 ? 16 : 24;
       setDims((prev) => {
