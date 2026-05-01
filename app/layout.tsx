@@ -53,9 +53,9 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${barlow.variable} ${inter.variable} h-full antialiased dark`}
+      className={`${barlow.variable} ${inter.variable} antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-[#050508] text-[#f0f2f5] font-[family-name:var(--font-inter)]">
+      <body className="min-h-svh flex flex-col bg-[#050508] text-[#f0f2f5] font-[family-name:var(--font-inter)]">
         <GlobalParticles quantity={40} opacity={0.35} />
         {children}
       </body>
