@@ -307,9 +307,6 @@ export default function Pricing() {
       <div className="relative mx-auto max-w-[1120px]">
         {/* Header */}
         <div className="px-5 md:px-8">
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.1em] text-[#3b82f6]">
-            PRECIOS
-          </p>
           <h2 className="mb-4 font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-tight tracking-tight md:text-[2.4rem]">
             Planes simples. Resultados reales.
           </h2>

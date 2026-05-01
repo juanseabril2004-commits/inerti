@@ -34,9 +34,6 @@ export default function Trust() {
   return (
     <section className="py-24 md:py-28">
       <div className="mx-auto max-w-[1120px] px-5 md:px-8">
-        <p className="mb-5 text-xs font-semibold uppercase tracking-[0.1em] text-[#3b82f6]">
-          POR QUÉ INERTI
-        </p>
         <h2 className="mb-10 font-[family-name:var(--font-barlow)] text-3xl font-extrabold leading-tight tracking-tight md:text-[2.4rem]">
           Sin letra chica. Sin sorpresas.
         </h2>
