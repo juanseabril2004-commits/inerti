@@ -115,33 +115,40 @@ export default function Solutions() {
     const wrapper = wrapperRef.current;
     if (!wrapper) return;
 
+    let roTimeout: ReturnType<typeof setTimeout> | null = null;
     const lastWidthRef = { current: 0 };
     const ro = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const w = window.innerWidth;
-        const cr = entry.contentRect;
-        const containerW = cr.width;
-        // Ignore height-only changes (Chrome mobile toolbar show/hide)
-        if (Math.abs(containerW - lastWidthRef.current) < 1) return;
-        lastWidthRef.current = containerW;
+      if (roTimeout) clearTimeout(roTimeout);
+      roTimeout = setTimeout(() => {
+        for (const entry of entries) {
+          const w = window.innerWidth;
+          const cr = entry.contentRect;
+          const containerW = cr.width;
+          // Ignore height-only changes (Chrome mobile toolbar show/hide)
+          if (Math.abs(containerW - lastWidthRef.current) < 1) return;
+          lastWidthRef.current = containerW;
 
-        const cardW = w < 768 ? Math.min(320, containerW * 0.82) : 400;
-        const g = w < 768 ? 16 : 24;
-        setDims((prev) => {
-          if (
-            prev.containerWidth === containerW &&
-            prev.cardWidth === cardW &&
-            prev.gap === g
-          ) {
-            return prev;
-          }
-          return { containerWidth: containerW, cardWidth: cardW, gap: g };
-        });
-      }
+          const cardW = w < 768 ? Math.min(320, containerW * 0.82) : 400;
+          const g = w < 768 ? 16 : 24;
+          setDims((prev) => {
+            if (
+              prev.containerWidth === containerW &&
+              prev.cardWidth === cardW &&
+              prev.gap === g
+            ) {
+              return prev;
+            }
+            return { containerWidth: containerW, cardWidth: cardW, gap: g };
+          });
+        }
+      }, 150);
     });
 
     ro.observe(wrapper);
-    return () => ro.disconnect();
+    return () => {
+      ro.disconnect();
+      if (roTimeout) clearTimeout(roTimeout);
+    };
   }, []);
 
   const centerOffset = dims.containerWidth > 0
